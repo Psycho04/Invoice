@@ -13,13 +13,17 @@
       color: #0f172a;
       background: #ffffff;
       direction: rtl;
+      margin: 0;
+      padding: 0;
     }
 
     /* =========================================
-       MAIN WRAPPER - TABLE LAYOUT (wkhtmltopdf safe)
+       MAIN WRAPPER — 794px = A4 at 96dpi (matches Daftra PDF)
        ========================================= */
     .page-wrap {
-      width: 100%;
+      width: 794px;
+      min-height: 1122px;
+      margin: 0 auto;
       background: #ffffff;
     }
 
@@ -323,10 +327,15 @@
     /* =========================================
        PRINT RULES
        ========================================= */
-    @page { size: A4 portrait; margin: 0; }
+    @page { size: A4 portrait; margin: 0mm; }
     @media print {
-      body { background: #fff !important; padding: 0 !important; }
-      .page-wrap { width: 100% !important; }
+      body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+      .page-wrap {
+        width: 794px !important;
+        min-height: 1122px !important;
+        margin: 0 auto !important;
+        box-shadow: none !important;
+      }
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     }
   </style>
