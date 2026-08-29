@@ -5,34 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فاتورة ضريبية | Tax Invoice - شركة فحص التربة للإستشارات الهندسية (جسات)</title>
   
-  <!-- Modern Arabic & English Google Fonts -->
+  <!-- Google Fonts for Arabic and English -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   
-  <style>
+  <style type="text/css">
     /* ==========================================================================
-       1. GLOBAL RESET & BASE THEME (Exact Premium GSSAAT Layout)
+       1. GLOBAL RESET & BASE STYLING
        ========================================================================== */
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     body {
-      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
       color: #0f172a;
       background-color: #475569;
-      line-height: 1.38;
+      line-height: 1.35;
       font-size: 11px;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      padding: 25px 15px;
+      padding: 20px 0;
     }
 
     .en-text {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       direction: ltr;
       display: inline-block;
     }
@@ -50,7 +49,7 @@
       min-height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -88,7 +87,7 @@
 
     /* Main Content Container */
     .invoice-body {
-      padding: 12px 22px 16px 22px;
+      padding: 12px 22px 14px 22px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -120,7 +119,7 @@
     }
 
     .title-group .title-en {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 12px;
       font-weight: 700;
       color: #9d7736;
@@ -187,6 +186,7 @@
       font-weight: 700;
       color: #0f172a;
       font-family: 'Inter', 'Cairo', sans-serif;
+      word-break: break-word;
     }
 
     .meta-value.highlight {
@@ -269,6 +269,7 @@
       font-weight: 800;
       color: #0f172a;
       line-height: 1.25;
+      word-break: break-word;
     }
 
     .party-name-en {
@@ -277,6 +278,7 @@
       font-weight: 600;
       color: #64748b;
       margin-bottom: 1px;
+      word-break: break-word;
     }
 
     .party-detail-row {
@@ -296,12 +298,15 @@
       color: #64748b;
       font-weight: 600;
       font-size: 8.5px;
+      white-space: nowrap;
     }
 
     .party-detail-value {
       font-weight: 700;
       color: #0f172a;
       font-family: 'Inter', 'Cairo', sans-serif;
+      text-align: left;
+      word-break: break-word;
     }
 
     .vat-pill {
@@ -316,7 +321,7 @@
     }
 
     /* ==========================================================================
-       6. ITEMS TABLE
+       6. ITEMS TABLE & DAFTRA ERP TABLE ADAPTER
        ========================================================================== */
     .table-container {
       border: 1px solid #cbd5e1;
@@ -325,28 +330,36 @@
       background: #ffffff;
     }
 
-    .invoice-table,
+    /* Hide Daftra's second default totals table */
+    #items-list table:nth-child(2) {
+      display: none !important;
+    }
+
+    /* Force modern styling on Daftra's generated #listing_table */
     #items-list table,
-    #listing_table {
+    #listing_table,
+    .invoice-table {
       width: 100% !important;
       border-collapse: collapse !important;
       text-align: right;
       font-size: 9.5px;
+      border: none !important;
+      margin-bottom: 0 !important;
     }
 
-    .invoice-table thead,
     #items-list table thead,
-    #listing_table thead {
+    #listing_table thead,
+    .invoice-table thead {
       background: #00737a !important;
       color: #ffffff !important;
     }
 
-    .invoice-table th,
     #items-list table th,
-    #listing_table th {
+    #listing_table th,
+    .invoice-table th {
       background-color: #00737a !important;
       color: #ffffff !important;
-      padding: 6px 5px !important;
+      padding: 6px 4px !important;
       font-size: 9px !important;
       font-weight: 700 !important;
       border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -357,25 +370,15 @@
       white-space: nowrap;
     }
 
-    .invoice-table th:last-child,
     #items-list table th:last-child,
-    #listing_table th:last-child {
+    #listing_table th:last-child,
+    .invoice-table th:last-child {
       border-left: none !important;
     }
 
-    .invoice-table th .th-en,
-    #items-list table th .th-en,
-    #listing_table th .th-en {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-size: 7.5px;
-      font-weight: 500;
-      opacity: 0.85;
-    }
-
-    .invoice-table td,
     #items-list table td,
-    #listing_table td {
+    #listing_table td,
+    .invoice-table td {
       padding: 5px 6px !important;
       font-size: 9.5px !important;
       border-bottom: 1px solid #cbd5e1 !important;
@@ -384,22 +387,24 @@
       border-top: none !important;
       vertical-align: middle !important;
       text-align: center !important;
+      color: #0f172a !important;
     }
 
-    .invoice-table td:last-child,
     #items-list table td:last-child,
-    #listing_table td:last-child {
+    #listing_table td:last-child,
+    .invoice-table td:last-child {
       border-left: none !important;
     }
 
-    .invoice-table tbody tr:nth-child(even),
     #items-list table tbody tr:nth-child(even),
-    #listing_table tbody tr:nth-child(even) {
+    #listing_table tbody tr:nth-child(even),
+    .invoice-table tbody tr:nth-child(even) {
       background-color: #f8fafc !important;
     }
 
-    .col-idx { width: 24px; text-align: center !important; font-weight: 700; color: #64748b; font-family: 'Inter', sans-serif; }
-    .col-desc { width: 38%; text-align: right !important; }
+    /* Column Specific Alignments */
+    .col-idx, #serial { width: 24px; text-align: center !important; font-weight: 700; color: #64748b; font-family: 'Inter', sans-serif; }
+    .col-desc, #items-list table td:nth-child(2), #listing_table td:nth-child(2) { text-align: right !important; font-weight: 600; }
     .col-qty { width: 44px; text-align: center !important; font-family: 'Inter', sans-serif; font-weight: 600; }
     .col-unit { width: 44px; text-align: center !important; font-size: 9px; }
     .col-price { width: 68px; text-align: left !important; font-family: 'Inter', sans-serif; font-weight: 600; }
@@ -800,7 +805,7 @@
             <span>تاريخ التوريد / الاستحقاق</span>
             <span class="en-text">Due / Supply Date</span>
           </span>
-          <span class="meta-value" id="invDueDate">2026-09-28</span>
+          <span class="meta-value" id="invDueDate">{%invoice_date%}</span>
         </div>
 
         <div class="meta-box">
@@ -830,7 +835,7 @@
             
             <div class="party-detail-row">
               <span class="party-detail-label">الرقم الضريبي (VAT ID):</span>
-              <span class="party-detail-value vat-pill" id="sellerVatNumber">310458921400003</span>
+              <span class="party-detail-value vat-pill" id="sellerVatNumber">312662018500003</span>
             </div>
 
             <div class="party-detail-row">
@@ -861,7 +866,7 @@
           </div>
           <div class="party-body">
             <div class="party-name" id="buyerName">{%client_business_name%}</div>
-            <div class="party-name-en" id="buyerNameEn">Construction & Real Estate Development Holding Co.</div>
+            <div class="party-name-en" id="buyerNameEn">Customer / Client</div>
             
             <div class="party-detail-row">
               <span class="party-detail-label">الرقم الضريبي (VAT ID):</span>
@@ -879,15 +884,15 @@
             </div>
 
             <div class="party-detail-row">
-              <span class="party-detail-label">المسؤول (Contact Person):</span>
-              <span class="party-detail-value">م. طارق المنصور | 0501234567</span>
+              <span class="party-detail-label">المشروع (Project):</span>
+              <span class="party-detail-value">{%project%}</span>
             </div>
           </div>
         </article>
 
       </section>
 
-      <!-- 4. Line Items Table -->
+      <!-- 4. Line Items Table (Rendered by Daftra ERP via {%items_list%}) -->
       <section class="table-container" id="items-list">
         {%items_list%}
       </section>
@@ -916,22 +921,17 @@
 
               <div class="bank-field">
                 <span class="bank-field-label">اسم الحساب (Account Name):</span>
-                <span class="bank-field-value">شركة فحص التربة للإستشارات الهندسية</span>
+                <span class="bank-field-value">مختبر فحص التربة لمواد البناء</span>
               </div>
 
               <div class="bank-field" style="grid-column: span 2;">
                 <span class="bank-field-label">رقم الآيبان (IBAN):</span>
-                <span class="iban-badge">SA44 8000 0345 6080 1009 8765</span>
+                <span class="iban-badge">SA7780000362608010054676</span>
               </div>
 
               <div class="bank-field">
-                <span class="bank-field-label">رقم الحساب (Account No.):</span>
-                <span class="bank-field-value">345608010098765</span>
-              </div>
-
-              <div class="bank-field">
-                <span class="bank-field-label">طريقة وسداد الدفع (Payment Terms):</span>
-                <span class="bank-field-value">خلال 30 يوماً / Net 30 Days</span>
+                <span class="bank-field-label">طريقة وسداد الدفع:</span>
+                <span class="bank-field-value">تحويل بنكي / Net 30</span>
               </div>
             </div>
           </div>
@@ -988,14 +988,6 @@
 
               <tr>
                 <td class="totals-label">
-                  الإجمالي الخاضع للضريبة
-                  <span class="lbl-en">Total Taxable Amount</span>
-                </td>
-                <td class="totals-value" id="dispTaxable">42,500.00 <span class="currency-code">SAR</span></td>
-              </tr>
-
-              <tr>
-                <td class="totals-label">
                   ضريبة القيمة المضافة (15%)
                   <span class="lbl-en">Value Added Tax (15% VAT)</span>
                 </td>
@@ -1018,8 +1010,8 @@
               <span>المبلغ كتابة:</span>
               <span class="en-text">Amount in Words:</span>
             </div>
-            <div class="tafqeet-ar arabicTfket" id="dispTafqeetAr">ثمانية وأربعون ألفاً وثمانمائة وخمسة وسبعون ريالاً سعودياً فقط لا غير</div>
-            <div class="tafqeet-en tfketEnglish" id="dispTafqeetEn">Forty-Eight Thousand Eight Hundred Seventy-Five Saudi Riyals Only</div>
+            <div class="tafqeet-ar arabicTfket" id="dispTafqeetAr">--</div>
+            <div class="tafqeet-en tfketEnglish" id="dispTafqeetEn">--</div>
           </div>
 
         </div>
@@ -1039,10 +1031,10 @@
   {%html_sticky_footer%}
 
   <!-- ==========================================================================
-       JAVASCRIPT: DAFTRA ADAPTER & PREVIEW ENGINE
-       ========================================================================== -->
+       JAVASCRIPT: DAFTRA HOOKS & PREVIEW ENGINE
+       ========================================================================== */
   <script type="text/javascript">
-    // Fallback for Local Browser Testing (Outside Daftra)
+    // 1. Fallback for Local Browser Testing (Outside Daftra)
     function setupPreviewFallback() {
       var sampleData = {
         "{%invoice_no%}": "INV-2026-0842",
@@ -1053,8 +1045,8 @@
         "{client_bn1%%}": "300984521400003",
         "{%client_business_name%}": "شركة الإنشاءات والتطوير العقاري القابضة",
         "{%client_full_address%}": "طريق الملك عبدالعزيز، حي الياسمين، الرياض",
-        "{%project%}": "PO-KSA-9941",
-        "{%project name%}": "PO-KSA-9941 / مشروع العليا",
+        "{%project%}": "PRJ-9941",
+        "{%project name%}": "مشروع برج العليا التجاري / Al Olaya Tower",
         "{%invoice_subtotal%}": "44,300.00",
         "{%tax-total%}": "6,375.00",
         "{%item-discount-total%}": "-1,800.00",
@@ -1065,7 +1057,7 @@
       // Populate Items Table if not rendered by Daftra
       var itemsDiv = document.getElementById("items-list");
       if (itemsDiv && (itemsDiv.innerHTML.indexOf("{%items_list%}") !== -1 || itemsDiv.innerHTML.trim() === "")) {
-        itemsDiv.innerHTML = '<table class="invoice-table" id="itemsTable">' +
+        itemsDiv.innerHTML = '<table class="invoice-table" id="listing_table">' +
           '<thead><tr>' +
           '<th class="col-idx">#</th>' +
           '<th class="col-desc">الوصف وتفاصيل الخدمة<span class="th-en">Service Description</span></th>' +
@@ -1107,7 +1099,32 @@
     }
     try { setupPreviewFallback(); } catch(e) { console.log(e); }
 
-    // Number to Words (Tafqeet)
+    // 2. Add Serial Number Column if generated by Daftra
+    function addSerCol() {
+      var tbl = document.getElementById("listing_table");
+      if (!tbl || !tbl.rows || tbl.rows.length === 0) return;
+      
+      // Check if serial already exists
+      if (tbl.rows[0].cells[0].innerText.indexOf("#") !== -1 || tbl.rows[0].cells[0].innerText.indexOf("م") !== -1) return;
+
+      for (var i = 0; i < tbl.rows.length; i++) {
+        var newCell = tbl.rows[i].insertCell(0);
+        newCell.style.width = "25px";
+        newCell.style.textAlign = "center";
+        newCell.style.fontWeight = "bold";
+        if (i === 0) {
+          newCell.innerHTML = "#<br><span style='font-size:7.5px;'>م</span>";
+          newCell.style.backgroundColor = "#00737a";
+          newCell.style.color = "#ffffff";
+        } else {
+          newCell.innerText = i;
+          newCell.style.fontFamily = "Inter, sans-serif";
+        }
+      }
+    }
+    try { addSerCol(); } catch(e) { console.log(e); }
+
+    // 3. Number to Words (Tafqeet)
     function updateTafqeet() {
       try {
         var totalElem = document.getElementById("total");
