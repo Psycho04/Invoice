@@ -58,6 +58,7 @@
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
+      transition: background 0.2s ease;
     }
 
     .no-print-bar button:hover {
@@ -192,7 +193,8 @@
       padding: 4px !important;
     }
 
-    .qr-center img {
+    .qr-center img,
+    .qr-center svg {
       max-width: 75px;
       max-height: 75px;
       display: block;
@@ -612,8 +614,27 @@
        JAVASCRIPT: DAFTRA HOOKS, TAFQEET & LOCAL PREVIEW ENGINE
        ========================================================================== -->
   <script type="text/javascript">
-    // 1. Fallback for Local Browser Testing (Outside Daftra)
+    // 1. Automatic Fallback for Local Browser Testing (Outside Daftra)
     function checkLocalPreview() {
+      var sampleData = {
+        "{%invoice_no%}": "INV-2026-0842",
+        "{%invoice_date%}": "2026-08-29",
+        "{%client_bn2%}": "1010389271",
+        "{client_bn2%%}": "1010389271",
+        "{%client_bn1%}": "300984521400003",
+        "{client_bn1%%}": "300984521400003",
+        "{%client_business_name%}": "شركة الإنشاءات والتطوير العقاري القابضة",
+        "{%client_full_address%}": "طريق الملك عبدالعزيز، حي الياسمين، الرياض",
+        "{%project%}": "PRJ-9941",
+        "{%project name%}": "مشروع برج العليا التجاري / Al Olaya Tower",
+        "{%invoice_subtotal%}": "44,230.43",
+        "{%tax-total%}": "6,634.57",
+        "{%item-discount-total%}": "0.00",
+        "{%invoice_total%}": "50,865.00 SAR",
+        "{%footer%}": "يُرجى سداد المبلغ الإجمالي عبر الحساب البنكي المعتمد خلال المدة المحددة. أي ملاحظات يجب إخطارنا بها خلال 7 أيام من تاريخ الإصدار."
+      };
+
+      // Populate Items Table if not rendered by Daftra
       var itemsDiv = document.getElementById("items-list");
       if (itemsDiv && (itemsDiv.innerHTML.indexOf("{%items_list%}") !== -1 || itemsDiv.innerHTML.trim() === "")) {
         itemsDiv.innerHTML = '<table id="listing_table" class="listing-table">' +
@@ -630,13 +651,24 @@
           '<tr><td>الفحوصات المخبرية الفيزيائية والكيميائية الشاملة لعينات التربة</td><td>1</td><td>6,500.00</td><td>975.00</td><td>7,475.00</td></tr>' +
           '<tr><td>إعداد التقرير الجيوتقني الشامل وتوصيات التأسيس ونظام سند الحفر</td><td>1</td><td>8,000.00</td><td>1,200.00</td><td>9,200.00</td></tr>' +
           '</tbody></table>';
+      }
 
-        var titleNo = document.querySelector(".titleNo");
-        if (titleNo && titleNo.innerText.indexOf("{%") !== -1) titleNo.innerText = "INV-2026-0842";
-        
-        var qrCenter = document.querySelector(".qr-center");
-        if (qrCenter && qrCenter.innerHTML.indexOf("{%") !== -1) {
-          qrCenter.innerHTML = '<svg viewBox="0 0 33 33" style="width:70px;height:70px;"><rect width="33" height="33" fill="#fff"/><path d="M2 2h7v7H2zM24 2h7v7h-7zM2 24h7v7H2zM4 4v3h3V4zm22 0v3h3V4zM4 26v3h3v-3zm7-24h2v2h-2zm4 0h3v2h-3zm5 0h1v2h-1zm-9 4h1v2h-1zm3 0h2v2h-2zm-3 4h2v2h-2zm4 0h1v2h-1zm3 0h2v2h-2zm-7 4h3v2h-3zm5 0h2v2h-2zm4 0h3v2h-3zm-9 4h2v2h-2zm4 0h1v2h-1zm3 0h3v2h-3zm-7 4h1v2h-1zm3 0h2v2h-2zm5 0h2v2h-2z" fill="#00737a"/></svg>';
+      // Populate QR code placeholder if outside Daftra
+      var qrCenter = document.querySelector(".qr-center");
+      if (qrCenter && (qrCenter.innerHTML.indexOf("{%sa_qr_code_image%}") !== -1 || qrCenter.innerHTML.trim() === "")) {
+        qrCenter.innerHTML = '<svg viewBox="0 0 33 33" style="width:70px;height:70px;"><rect width="33" height="33" fill="#fff"/><path d="M2 2h7v7H2zM24 2h7v7h-7zM2 24h7v7H2zM4 4v3h3V4zm22 0v3h3V4zM4 26v3h3v-3zm7-24h2v2h-2zm4 0h3v2h-3zm5 0h1v2h-1zm-9 4h1v2h-1zm3 0h2v2h-2zm-3 4h2v2h-2zm4 0h1v2h-1zm3 0h2v2h-2zm-7 4h3v2h-3zm5 0h2v2h-2zm4 0h3v2h-3zm-9 4h2v2h-2zm4 0h1v2h-1zm3 0h3v2h-3zm-7 4h1v2h-1zm3 0h2v2h-2zm5 0h2v2h-2z" fill="#00737a"/></svg>';
+      }
+
+      // Scan and replace all unrendered placeholders in page
+      var allBoxes = document.querySelectorAll(".val-box, .editable-area, #total, td");
+      for (var i = 0; i < allBoxes.length; i++) {
+        var el = allBoxes[i];
+        if (el.children.length === 0 && el.innerText) {
+          for (var tag in sampleData) {
+            if (el.innerText.indexOf(tag) !== -1) {
+              el.innerText = sampleData[tag];
+            }
+          }
         }
       }
     }
@@ -732,15 +764,18 @@
       tr3.innerHTML = '<td colspan="' + colCount + '"></td>';
       tr4.innerHTML = '<td colspan="' + colCount + '"></td>';
 
+      var totalVal = "{%invoice_total%}";
+      if (totalVal.indexOf("{%") !== -1) totalVal = "50,865.00 SAR";
+
       if (colCount <= 8) {
         tr1.innerHTML = '<td colspan="3" class="tfketEnglish"></td>' +
           '<td colspan="2" style="font-weight:bold; text-align:center;">الإجمالي / Total</td>' +
-          '<td id="total" style="font-weight:800; font-size:11px;">{%invoice_total%}</td>';
+          '<td id="total" style="font-weight:800; font-size:11px;">' + totalVal + '</td>';
         tr2.innerHTML = '<td colspan="' + colCount + '" class="arabicTfket"></td>';
       } else {
         tr1.innerHTML = '<td colspan="4" class="tfketEnglish"></td>' +
           '<td colspan="2" style="font-weight:bold; text-align:center;">الإجمالي / Total</td>' +
-          '<td>{%invoice_subtotal%}</td><td>{%tax-total%}</td><td id="total" style="font-weight:800; font-size:11px;">{%invoice_total%}</td>';
+          '<td>{%invoice_subtotal%}</td><td>{%tax-total%}</td><td id="total" style="font-weight:800; font-size:11px;">' + totalVal + '</td>';
         tr2.innerHTML = '<td colspan="' + colCount + '" class="arabicTfket"></td>';
       }
     }
