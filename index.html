@@ -607,10 +607,12 @@
     }
 
     .stamp-img {
-      width: 90px;
-      height: 90px;
+      width: 140px;
+      height: 100px;
+      max-height: 105px;
       object-fit: contain;
       display: block;
+      margin: 0 auto;
     }
 
     /* TOTALS TABLE */
@@ -932,10 +934,6 @@
                       <td class="card-lbl">رقم المبنى <span class="lbl-en">(Building No.):</span></td>
                       <td class="card-val" id="buyerBuildingNo">{%client_building_no%}</td>
                     </tr>
-                    <tr>
-                      <td class="card-lbl">اسم المشروع <span class="lbl-en">(Project Name):</span></td>
-                      <td class="card-val" id="buyerProjectName">{%project_name%}</td>
-                    </tr>
                   </table>
                 </td>
               </tr>
@@ -946,7 +944,7 @@
 
       <!-- ============ 4. PROJECT NAME BAR + ITEMS TABLE (DAFTRA ERP) ============ -->
       <div class="project-name-bar" id="projectNameBar">
-        <span class="project-name-label">&#128204;&nbsp;اسم المشروع / Project Name:</span>
+        <span class="project-name-label">اسم المشروع / Project Name:</span>
         <span class="project-name-value" id="projectNameBarValue">{%project_name%}</span>
       </div>
       <div class="items-wrap" id="items-list">
@@ -1024,11 +1022,11 @@
             <!-- QR + 6. Official Stamp (Borderless side-by-side) -->
             <table class="qr-stamp-row" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="100" style="text-align:center; padding:2px; vertical-align:middle;">
+                <td width="110" style="text-align:center; padding:2px; vertical-align:middle;">
                   <div class="qr-holder" id="zatcaQrCodeHolder">{%sa_qr_code_image%}</div>
                   <div class="qr-lbl">رمز الاستجابة السريعة<br><span class="lbl-en">(ZATCA QR)</span></div>
                 </td>
-                <td style="padding:2px 8px; vertical-align:middle;">
+                <td style="padding:2px 10px; vertical-align:middle; text-align:center;">
                   <div class="stamp-box">
                     <img id="branchStampImg"
                       src="https://raw.githubusercontent.com/Psycho04/Invoice/main/Assets/Stamp_Riyadh.jpg"
@@ -1214,23 +1212,13 @@
         // Buyer card fields
         var bp = document.getElementById("buyerPostalCode");
         var bb = document.getElementById("buyerBuildingNo");
-        var bpj = document.getElementById("buyerProjectName");
         if (bp && (bp.innerText.indexOf("{%") !== -1 || bp.innerText.trim() === "")) bp.innerText = "—";
         if (bb && (bb.innerText.indexOf("{%") !== -1 || bb.innerText.trim() === "")) bb.innerText = "—";
-        if (bpj && (bpj.innerText.indexOf("{%") !== -1 || bpj.innerText.trim() === "")) bpj.innerText = "—";
 
         // Project name bar (above items table)
         var pnbv = document.getElementById("projectNameBarValue");
-        if (pnbv) {
-          if (pnbv.innerText.indexOf("{%") !== -1 || pnbv.innerText.trim() === "") {
-            // Try to get from buyerProjectName
-            var bpjVal = document.getElementById("buyerProjectName");
-            pnbv.innerText = (bpjVal && bpjVal.innerText && bpjVal.innerText !== "—") ? bpjVal.innerText : "—";
-          }
-          // Sync: if buyer card has a real value, use it
-          if (bpj && bpj.innerText && bpj.innerText !== "—" && pnbv.innerText === "—") {
-            pnbv.innerText = bpj.innerText;
-          }
+        if (pnbv && (pnbv.innerText.indexOf("{%") !== -1 || pnbv.innerText.trim() === "")) {
+          pnbv.innerText = "—";
         }
 
         var ft = document.getElementById("footer");
