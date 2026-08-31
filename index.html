@@ -416,12 +416,29 @@
     }
 
     /* Description column - align right */
-    #listing_table tbody td:nth-child(2),
-    #items-list table tbody td:nth-child(2),
-    table.listing-table tbody td:nth-child(2) {
+    #listing_table tbody td:nth-child(3),
+    #items-list table tbody td:nth-child(3),
+    table.listing-table tbody td:nth-child(3) {
       text-align: right !important;
       font-weight: 600 !important;
       padding-right: 6px !important;
+    }
+
+    .desc-ar {
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 8.5px;
+      line-height: 1.35;
+      text-align: right;
+    }
+
+    .desc-en {
+      color: #94a3b8 !important;
+      font-size: 7.5px !important;
+      font-weight: 500 !important;
+      margin-top: 1.5px;
+      line-height: 1.25;
+      text-align: right;
     }
 
     /* Last column (total) - highlight in teal */
@@ -807,9 +824,7 @@
             <span class="main-title-branch-en" id="branchTitleEn"> - RIYADH</span>
           </td>
           <td style="text-align:left; width:45%;">
-            <span class="status-pill">مستحقة الدفع | DUE</span>
-            &nbsp;
-            <span style="font-size:8.5px; color:#64748b;">فاتورة ضريبية قياسية <span class="lbl-en">(B2B /
+            <span style="font-size:8.5px; color:#64748b; font-weight:600;">فاتورة ضريبية قياسية <span class="lbl-en">(B2B /
                 B2C)</span></span>
           </td>
         </tr>
@@ -924,7 +939,7 @@
                     </tr>
                     <tr>
                       <td class="card-lbl">العنوان <span class="lbl-en">(Address):</span></td>
-                      <td class="card-val">{%client_full_address%}</td>
+                      <td class="card-val" id="buyerAddress" style="min-height:24px; line-height:1.3;">{%client_full_address%}</td>
                     </tr>
                     <tr>
                       <td class="card-lbl">الرمز البريدي <span class="lbl-en">(Postal Code):</span></td>
@@ -1210,15 +1225,25 @@
         }
 
         // Buyer card fields
+        var ba = document.getElementById("buyerAddress");
         var bp = document.getElementById("buyerPostalCode");
         var bb = document.getElementById("buyerBuildingNo");
-        if (bp && (bp.innerText.indexOf("{%") !== -1 || bp.innerText.trim() === "")) bp.innerText = "—";
-        if (bb && (bb.innerText.indexOf("{%") !== -1 || bb.innerText.trim() === "")) bb.innerText = "—";
+        if (ba && (ba.innerText.indexOf("{%") !== -1 || ba.innerText.trim() === "")) {
+          ba.innerText = "شارع التخصصي، حي الملقا، الرياض، المملكة العربية السعودية";
+        }
+        if (bp && (bp.innerText.indexOf("{%") !== -1 || bp.innerText.trim() === "")) bp.innerText = "13524";
+        if (bb && (bb.innerText.indexOf("{%") !== -1 || bb.innerText.trim() === "")) bb.innerText = "7412";
 
         // Project name bar (above items table)
         var pnbv = document.getElementById("projectNameBarValue");
         if (pnbv && (pnbv.innerText.indexOf("{%") !== -1 || pnbv.innerText.trim() === "")) {
-          pnbv.innerText = "—";
+          pnbv.innerText = "أعمال فحص وتقييم الشروخ بسقف القبو بمشروع سوليدير بوليفارد - حي الملقا بمدينة الرياض";
+        }
+
+        // Mockup QR Code
+        var qr = document.getElementById("zatcaQrCodeHolder");
+        if (qr && (qr.innerHTML.indexOf("{%") !== -1 || qr.innerText.trim() === "")) {
+          qr.innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gssaat.com" alt="ZATCA QR Mockup" style="width:95px; height:95px; display:block; margin:0 auto; border-radius:2px;" />';
         }
 
         var ft = document.getElementById("footer");
@@ -1237,33 +1262,83 @@
           wrap.innerHTML = '<table id="listing_table" class="listing-table" cellpadding="0" cellspacing="0">' +
             '<thead>' +
             '<tr>' +
-            '<th style="width:22px;">م<br><span style="font-size:7px; color:rgba(255,255,255,0.72);">No</span></th>' +
-            '<th style="width:32px;">رقم الصنف<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Item No</span></th>' +
+            '<th style="width:20px;">م<br><span style="font-size:7px; color:rgba(255,255,255,0.72);">No</span></th>' +
+            '<th style="width:40px;">رقم الصنف<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Item No</span></th>' +
             '<th>الوصف وتفاصيل الخدمة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Description &amp; Service Details</span></th>' +
-            '<th style="width:28px;">الوحدة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Unit</span></th>' +
+            '<th style="width:32px;">الوحدة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Unit</span></th>' +
             '<th style="width:28px;">الكمية<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Qty</span></th>' +
-            '<th style="width:52px;">سعر الوحدة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Unit Price</span></th>' +
-            '<th style="width:60px;">الإجمالي قبل الضريبة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Total Before VAT</span></th>' +
+            '<th style="width:50px;">سعر الوحدة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Unit Price</span></th>' +
+            '<th style="width:65px;">الإجمالي قبل الضريبة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Total Before VAT</span></th>' +
             '<th style="width:52px;">ضريبة القيمة 15%<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">VAT 15%</span></th>' +
-            '<th style="width:40px;">الخصم<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Discount</span></th>' +
-            '<th style="width:62px;">الإجمالي بعد الضريبة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Total After VAT</span></th>' +
+            '<th style="width:65px;">الإجمالي بعد الضريبة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Total After VAT</span></th>' +
             '</tr>' +
             '</thead>' +
             '<tbody>' +
             '<tr>' +
             '<td>1</td>' +
             '<td>000004</td>' +
-            '<td style="text-align:right;">أعمال فحص التربة واختبارات الجسات الحقلية والمخبرية لموقع المشروع (Soil Investigation &amp; Geotechnical Testing)</td>' +
+            '<td><div class="desc-ar">أخذ عينات لبية خرسانية (concrete core test) من سقف القبو وفحصها للكسر وتحديد مقاومة الضغط للخرسانة</div><div class="desc-en">Taking concrete core samples from basement slab &amp; compressive strength testing</div></td>' +
+            '<td>اختبار</td>' +
+            '<td>1.5</td>' +
+            '<td>355.00</td>' +
+            '<td>532.50</td>' +
+            '<td>79.88</td>' +
+            '<td>612.38</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>2</td>' +
+            '<td>000004</td>' +
+            '<td><div class="desc-ar">أخذ عينات لبية خرسانية (concrete core test) من سقف القبو بمناطق الشروخ لفحص امتداد الشروخ داخل قطاع السقف</div><div class="desc-en">Taking concrete core samples at crack zones to check crack depth inside slab</div></td>' +
             '<td>اختبار</td>' +
             '<td>1</td>' +
-            '<td>1,000.00</td>' +
-            '<td>1,000.00</td>' +
-            '<td>150.00</td>' +
-            '<td>—</td>' +
-            '<td>1,150.00</td>' +
+            '<td>185.00</td>' +
+            '<td>185.00</td>' +
+            '<td>27.75</td>' +
+            '<td>212.75</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>3</td>' +
+            '<td>000012</td>' +
+            '<td><div class="desc-ar">تحديد توزيع وأقطار حديد التسليح وتحديد قيمة الغطاء الخرساني بسقف القبو بمناطق الشروخ (cover meter)</div><div class="desc-en">Rebar detection, diameter sizing &amp; concrete cover depth verification</div></td>' +
+            '<td>اختبار</td>' +
+            '<td>3</td>' +
+            '<td>162.00</td>' +
+            '<td>486.00</td>' +
+            '<td>72.90</td>' +
+            '<td>558.90</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>4</td>' +
+            '<td>000026</td>' +
+            '<td><div class="desc-ar">إجراء اختبار الموجات فوق الصوتية (UPV) على العناصر الإنشائية للتأكد من تجانس الخرسانة وخلوها من العيوب والتحقق من احتمالية امتداد الشروخ</div><div class="desc-en">Ultrasonic Pulse Velocity test (UPV) for concrete homogeneity and crack assessment</div></td>' +
+            '<td>اختبار</td>' +
+            '<td>5</td>' +
+            '<td>250.00</td>' +
+            '<td>1,250.00</td>' +
+            '<td>187.50</td>' +
+            '<td>1,437.50</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>5</td>' +
+            '<td>000012</td>' +
+            '<td><div class="desc-ar">إجراء اختبار فحص نصف الخلية (half-cell) للكشف عن احتمالية انتشار الصدأ في حديد التسليح بمناطق الشروخ وتسريب المياه بسقف القبو</div><div class="desc-en">Half-cell potential test to assess corrosion risk in reinforcement steel</div></td>' +
+            '<td>اختبار</td>' +
+            '<td>2</td>' +
+            '<td>279.00</td>' +
+            '<td>558.00</td>' +
+            '<td>83.70</td>' +
+            '<td>641.70</td>' +
             '</tr>' +
             '</tbody>' +
             '</table>';
+
+          // Update preview totals table values
+          var dSub = document.getElementById("dispSubtotal");
+          var dVat = document.getElementById("dispVat");
+          var dTot = document.getElementById("total");
+          if (dSub && dSub.innerText.indexOf("{%") !== -1) dSub.innerText = "3,011.50 SAR";
+          if (dVat && dVat.innerText.indexOf("{%") !== -1) dVat.innerText = "451.73 SAR";
+          if (dTot && dTot.innerText.indexOf("{%") !== -1) dTot.innerText = "3,463.23 SAR";
           return;
         }
 
@@ -1288,35 +1363,17 @@
         }
 
         // Set last column header with lighter English color
-        headerRow.cells[lastIdx].innerHTML = "الإجمالي شامل الضريبة<br><span style='font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;'>Total Incl. VAT</span>";
-
-        // Check if discount exists
-        var hasDiscount = false;
-        if (discIdx !== -1) {
-          for (var r = 1; r < tbl.rows.length; r++) {
-            var cell = tbl.rows[r].cells[discIdx];
-            if (cell) {
-              var num = parseFloat(cell.innerText.replace(/[^0-9.]/g, ""));
-              if (num > 0) { hasDiscount = true; break; }
-            }
-          }
-        }
-        var discSummary = document.getElementById("dispDiscount");
-        if (discSummary) {
-          var rawD = discSummary.innerText.replace(/[^0-9.]/g, "");
-          var totalDisc = parseFloat(rawD);
-          if (!isNaN(totalDisc) && totalDisc > 0) hasDiscount = true;
-        }
+        headerRow.cells[lastIdx].innerHTML = "الإجمالي بعد الضريبة<br><span style='font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;'>Total After VAT</span>";
 
         // Update Tax Amount header with lighter English color
         if (taxAmtIdx !== -1) {
-          headerRow.cells[taxAmtIdx].innerHTML = "مبلغ الضريبة (15%)<br><span style='font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;'>VAT Amount (15%)</span>";
+          headerRow.cells[taxAmtIdx].innerHTML = "ضريبة القيمة 15%<br><span style='font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;'>VAT 15%</span>";
         }
 
-        // Remove Tax Rate column and conditionally remove Discount column from items table
+        // Unconditionally remove Tax Rate column and Discount column
         var toDelete = [];
         if (taxRateIdx !== -1) toDelete.push(taxRateIdx);
-        if (discIdx !== -1 && !hasDiscount) toDelete.push(discIdx);
+        if (discIdx !== -1) toDelete.push(discIdx);
 
         toDelete.sort(function (a, b) { return b - a; });
         toDelete.forEach(function (idx) {
@@ -1327,20 +1384,9 @@
           }
         });
 
-        // Control Totals Table discount row & subtotal label
+        // Hide discount row from Totals Table
         var dRow = document.getElementById("rowDiscount");
-        var lblSubAr = document.getElementById("lblSubtotalAr");
-        var lblSubEn = document.getElementById("lblSubtotalEn");
-
-        if (hasDiscount) {
-          if (dRow) dRow.style.display = "";
-          if (lblSubAr) lblSubAr.innerText = "المجموع الفرعي (قبل الخصم)";
-          if (lblSubEn) lblSubEn.innerText = "Subtotal (Excl. Discount)";
-        } else {
-          if (dRow) dRow.style.display = "none";
-          if (lblSubAr) lblSubAr.innerText = "المجموع قبل الضريبة";
-          if (lblSubEn) lblSubEn.innerText = "Total Before VAT";
-        }
+        if (dRow) dRow.style.display = "none";
 
         // Add serial column if missing
         var firstTh = tbl.rows[0].cells[0];
