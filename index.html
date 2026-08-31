@@ -17,10 +17,11 @@
       font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
       font-size: 10px;
       color: #0f172a;
-      background: #f1f5f9;
+      background: #ffffff;
       direction: rtl;
       margin: 0;
-      padding: 20px 0;
+      padding: 0;
+      width: 100%;
     }
 
     /* =========================================
@@ -37,7 +38,8 @@
        Pinned Footer at the very bottom of A4 page
        ========================================= */
     .page-wrap {
-      width: 794px;
+      width: 100%;
+      max-width: 794px;
       min-height: 1122px;
       margin: 0 auto;
       background: #ffffff;
@@ -46,6 +48,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-sizing: border-box;
     }
 
     /* =========================================
@@ -579,8 +582,8 @@
 
     .qr-holder img,
     .qr-holder svg {
-      width: 75px;
-      height: 75px;
+      width: 95px;
+      height: 95px;
       display: block;
       margin: 0 auto;
     }
@@ -593,25 +596,21 @@
       margin-top: 2px;
     }
 
-    /* Official Stamp Card (No Borders - Stamp Image Only) */
+    /* Official Stamp Card (No Borders - Natural Stamp Image Ratio) */
     .stamp-box {
       border: none;
       padding: 0;
       text-align: center;
-      height: 92px;
       background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
 
     .stamp-img {
-      width: 100%;
-      height: 100%;
-      max-height: 92px;
-      object-fit: contain;
-      display: block;
+      max-width: 140px;
+      max-height: 88px;
+      width: auto !important;
+      height: auto !important;
+      display: inline-block;
     }
 
     /* TOTALS TABLE */
@@ -775,9 +774,9 @@
       <table class="title-row" cellpadding="0" cellspacing="0">
         <tr>
           <td style="text-align:right; width:55%;">
-            <span class="main-title arabicTarget">فاتورة ضريبية</span>
+            <span class="main-title arabicTarget" id="invTitleAr">{%invoice_title%}</span>
             <span class="main-title-branch" id="branchTitleAr"> - فرع الرياض</span>
-            <span class="main-title-en englishTarget">&nbsp;/ TAX INVOICE</span>
+            <span class="main-title-en englishTarget" id="invTitleEn">&nbsp;/ TAX INVOICE</span>
             <span class="main-title-branch-en" id="branchTitleEn"> - RIYADH</span>
           </td>
           <td style="text-align:left; width:45%;">
@@ -805,12 +804,12 @@
           <td width="25%">
             <div class="meta-lbl">رقم أمر الشراء</div>
             <div class="meta-lbl-en">PO Number</div>
-            <div class="meta-val" id="poNumber">{%po_number%}</div>
+            <div class="meta-val" id="poNumber">{%po_number%}{%purchase_order%}{%order_no%}</div>
           </td>
           <td width="25%">
             <div class="meta-lbl">رقم المشروع</div>
             <div class="meta-lbl-en">Project Number</div>
-            <div class="meta-val" id="projNumber">{%project_number%}</div>
+            <div class="meta-val" id="projNumber">{%project_no%}{%project_number%}{%project_code%}{%project_id%}</div>
           </td>
         </tr>
       </table>
@@ -910,7 +909,7 @@
                     </tr>
                     <tr>
                       <td class="card-lbl">اسم المشروع <span class="lbl-en">(Project Name):</span></td>
-                      <td class="card-val" id="buyerProjectName">{%project_name%}</td>
+                      <td class="card-val" id="buyerProjectName">{%project_name%}{%project%}</td>
                     </tr>
                   </table>
                 </td>
@@ -996,7 +995,7 @@
             <!-- QR + 6. Official Stamp (Borderless side-by-side) -->
             <table class="qr-stamp-row" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="100" style="text-align:center; padding:2px; vertical-align:middle;">
+                <td width="110" style="text-align:center; padding:2px; vertical-align:middle;">
                   <div class="qr-holder" id="zatcaQrCodeHolder">{%sa_qr_code_image%}</div>
                   <div class="qr-lbl">رمز الاستجابة السريعة<br><span class="lbl-en">(ZATCA QR)</span></div>
                 </td>
@@ -1022,7 +1021,7 @@
                   <span id="lblSubtotalAr">المجموع قبل الضريبة</span>
                   <span class="totals-lbl-en" id="lblSubtotalEn">Total Before VAT</span>
                 </td>
-                <td class="totals-val" id="dispSubtotal">{%invoice_subtotal%} SAR</td>
+                <td class="totals-val" id="dispSubtotal">{%invoice_subtotal%}{%subtotal%}</td>
               </tr>
 
               <!-- 2. Discount Amount (Only appears if there is a discount) -->
@@ -1031,7 +1030,7 @@
                   إجمالي الخصم
                   <span class="totals-lbl-en">Total Discount</span>
                 </td>
-                <td class="totals-val" id="dispDiscount" style="color:#dc2626;">{%item-discount-total%} SAR</td>
+                <td class="totals-val" id="dispDiscount" style="color:#dc2626;">{%item-discount-total%}{%discount_total%}</td>
               </tr>
 
               <!-- 3. VAT Amount (15%) -->
@@ -1040,7 +1039,7 @@
                   ضريبة القيمة المضافة (15%)
                   <span class="totals-lbl-en">Value Added Tax (15% VAT)</span>
                 </td>
-                <td class="totals-val" id="dispVat">{%tax-total%} SAR</td>
+                <td class="totals-val" id="dispVat">{%tax-total%}{%tax_total%}</td>
               </tr>
 
               <!-- 4. Total Including VAT -->
@@ -1049,15 +1048,15 @@
                   المبلغ الإجمالي المستحق
                   <span class="totals-lbl-en">TOTAL AMOUNT DUE (INCL. VAT)</span>
                 </td>
-                <td class="totals-val" id="total">{%invoice_total%} SAR</td>
+                <td class="totals-val" id="total">{%invoice_total%}{%total%}</td>
               </tr>
             </table>
 
             <!-- Tafqeet -->
             <div class="tafqeet-box">
               <div class="tafqeet-lbl">المبلغ كتابة: <span class="lbl-en">/ Amount in Words:</span></div>
-              <div class="tafqeet-ar arabicTfket" id="dispTafqeetAr">--</div>
-              <div class="tafqeet-en tfketEnglish" id="dispTafqeetEn">--</div>
+              <div class="tafqeet-ar arabicTfket" id="dispTafqeetAr">{%arabic_amount%}{%arabic_total%}{%tafqeet%}</div>
+              <div class="tafqeet-en tfketEnglish" id="dispTafqeetEn">{%english_amount%}{%english_total%}</div>
             </div>
 
           </td>
@@ -1170,19 +1169,59 @@
         if (sBld && b.buildingNo) sBld.innerText = b.buildingNo;
       }
 
-      // Clean Meta Info placeholders if unfilled
+      // Clean Meta Info placeholders if unfilled (only in preview mode)
       function cleanMetaInfo() {
+        var invNo = document.getElementById("invNumber");
+        var invD = document.getElementById("invDate");
         var po = document.getElementById("poNumber");
         var proj = document.getElementById("projNumber");
-        if (po && po.innerText.indexOf("{%") !== -1) po.innerText = "PO-2026-0891";
-        if (proj && proj.innerText.indexOf("{%") !== -1) proj.innerText = "PRJ-9042";
-
+        var bName = document.getElementById("buyerName");
         var bp = document.getElementById("buyerPostalCode");
         var bb = document.getElementById("buyerBuildingNo");
         var bpj = document.getElementById("buyerProjectName");
-        if (bp && bp.innerText.indexOf("{%") !== -1) bp.innerText = "12331";
-        if (bb && bb.innerText.indexOf("{%") !== -1) bb.innerText = "3421";
-        if (bpj && bpj.innerText.indexOf("{%") !== -1) bpj.innerText = "مشروع برج الأندلس السكني";
+        var qrHolder = document.getElementById("zatcaQrCodeHolder");
+
+        if (invNo && (invNo.innerText.indexOf("{%") !== -1 || invNo.innerText.trim() === "")) invNo.innerText = "INV-2026-0891";
+        if (invD && (invD.innerText.indexOf("{%") !== -1 || invD.innerText.trim() === "")) invD.innerText = "2026-08-31";
+        if (po && (po.innerText.indexOf("{%") !== -1 || po.innerText.trim() === "")) po.innerText = "PO-2026-0891";
+        if (proj && (proj.innerText.indexOf("{%") !== -1 || proj.innerText.trim() === "")) proj.innerText = "PRJ-9042";
+
+        if (bName && (bName.innerText.indexOf("{%") !== -1 || bName.innerText.trim() === "")) bName.innerText = "شركة سوليدير للتطوير العقاري";
+        if (bp && (bp.innerText.indexOf("{%") !== -1 || bp.innerText.trim() === "")) bp.innerText = "12331";
+        if (bb && (bb.innerText.indexOf("{%") !== -1 || bb.innerText.trim() === "")) bb.innerText = "3421";
+        if (bpj && (bpj.innerText.indexOf("{%") !== -1 || bpj.innerText.trim() === "")) {
+          bpj.innerText = "أعمال فحص وتقييم الشروخ بسقف القبو بمشروع سوليدير بوليفارد - حي الملقا بمدينة الرياض";
+        }
+
+        // Clean Buyer Card tags in local preview mode
+        var cardBody = document.querySelector(".card-buyer .card-body");
+        if (cardBody) {
+          var html = cardBody.innerHTML;
+          html = html.replace(/\{%client_bn1%\}/g, "300000000000003")
+                     .replace(/\{%client_bn2%\}/g, "1010000000")
+                     .replace(/\{%client_full_address%\}/g, "طريق أنس بن مالك، حي الملقا، الرياض، المملكة العربية السعودية");
+          cardBody.innerHTML = html;
+        }
+
+        // Clean QR placeholder in local preview mode
+        if (qrHolder && (qrHolder.innerHTML.indexOf("{%") !== -1 || qrHolder.innerHTML.trim() === "")) {
+          qrHolder.innerHTML = '<svg width="95" height="95" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<rect width="100" height="100" fill="white"/>' +
+            '<rect x="10" y="10" width="28" height="28" rx="3" stroke="#0f172a" stroke-width="4" fill="none"/>' +
+            '<rect x="18" y="18" width="12" height="12" fill="#0f172a"/>' +
+            '<rect x="62" y="10" width="28" height="28" rx="3" stroke="#0f172a" stroke-width="4" fill="none"/>' +
+            '<rect x="70" y="18" width="12" height="12" fill="#0f172a"/>' +
+            '<rect x="10" y="62" width="28" height="28" rx="3" stroke="#0f172a" stroke-width="4" fill="none"/>' +
+            '<rect x="18" y="70" width="12" height="12" fill="#0f172a"/>' +
+            '<rect x="46" y="14" width="8" height="8" fill="#0f172a"/>' +
+            '<rect x="46" y="28" width="8" height="18" fill="#0f172a"/>' +
+            '<rect x="62" y="46" width="12" height="8" fill="#0f172a"/>' +
+            '<rect x="78" y="46" width="12" height="18" fill="#0f172a"/>' +
+            '<rect x="46" y="62" width="18" height="8" fill="#0f172a"/>' +
+            '<rect x="46" y="78" width="8" height="12" fill="#0f172a"/>' +
+            '<rect x="68" y="74" width="22" height="16" fill="#0f172a"/>' +
+            '</svg>';
+        }
 
         var ft = document.getElementById("footer");
         if (ft && (ft.innerText.indexOf("{%") !== -1 || ft.innerText.trim() === "")) {
@@ -1195,29 +1234,95 @@
         var wrap = document.getElementById("items-list");
         if (!wrap) return;
 
-        // If running in raw HTML preview mode without Daftra ERP backend, render sample table
+        // If running in raw HTML preview mode without Daftra ERP backend, render sample table with exact 10 columns
         if (wrap.innerHTML.indexOf("{%items_list%}") !== -1) {
           wrap.innerHTML = '<table id="listing_table" class="listing-table" cellpadding="0" cellspacing="0">' +
             '<thead>' +
             '<tr>' +
-            '<th>#<br><span style="font-size:7px; color:rgba(255,255,255,0.72);">م</span></th>' +
-            '<th>الوصف وتفاصيل الخدمة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Description & Service Details</span></th>' +
-            '<th>الكمية<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Qty</span></th>' +
-            '<th>سعر الوحدة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Unit Price</span></th>' +
-            '<th>المبلغ الخاضع للضريبة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Taxable Amount</span></th>' +
-            '<th>مبلغ الضريبة (15%)<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">VAT Amount (15%)</span></th>' +
-            '<th>الإجمالي شامل الضريبة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Total Incl. VAT</span></th>' +
+            '<th style="width:24px;">No<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">م</span></th>' +
+            '<th style="width:50px;">Item No<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">رقم الصنف</span></th>' +
+            '<th>Item Description<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">وصف الصنف</span></th>' +
+            '<th style="width:42px;">Unit<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الوحدة</span></th>' +
+            '<th style="width:36px;">Qty<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الكمية</span></th>' +
+            '<th style="width:58px;">Unit Price<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">سعر الوحدة</span></th>' +
+            '<th style="width:72px;">Total Before VAT<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الإجمالي قبل الضريبة</span></th>' +
+            '<th style="width:62px;">VAT 15%<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">ضريبة %15</span></th>' +
+            '<th style="width:52px;">Discount<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الخصم</span></th>' +
+            '<th style="width:72px;">Total After VAT<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الإجمالي بعد الضريبة</span></th>' +
             '</tr>' +
             '</thead>' +
             '<tbody>' +
             '<tr>' +
             '<td>1</td>' +
-            '<td>أعمال فحص التربة واختبارات الجسات الحقلية والمخبرية لموقع المشروع (Soil Investigation & Geotechnical Testing)</td>' +
+            '<td>000004</td>' +
+            '<td style="text-align:right; font-weight:600;">من سقف (concrete core test) أخذ عينات لبية خرسانية القبو وفحصها للكسر وتحديد مقاومة الضغط للخرسانة.</td>' +
+            '<td>اختبار</td>' +
+            '<td>1.5</td>' +
+            '<td>355.00</td>' +
+            '<td>532.50</td>' +
+            '<td>79.88</td>' +
+            '<td>-</td>' +
+            '<td>612.38</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>2</td>' +
+            '<td>000004</td>' +
+            '<td style="text-align:right; font-weight:600;">من سقف (concrete core test) أخذ عينات لبية خرسانية القبو بمناطق الشروخ لفحص امتداد الشروخ داخل قطاع السقف.</td>' +
+            '<td>اختبار</td>' +
             '<td>1</td>' +
-            '<td>1,000.00 SAR</td>' +
-            '<td>1,000.00 SAR</td>' +
-            '<td>150.00 SAR</td>' +
-            '<td>1,150.00 SAR</td>' +
+            '<td>185.00</td>' +
+            '<td>185.00</td>' +
+            '<td>27.75</td>' +
+            '<td>-</td>' +
+            '<td>212.75</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>3</td>' +
+            '<td>000012</td>' +
+            '<td style="text-align:right; font-weight:600;">وتحديد (cover meter) تحديد توزيع وأقطار حديد التسليح وقيمة الغطاء الخرساني بسقف القبو بمناطق الشروخ.</td>' +
+            '<td>اختبار</td>' +
+            '<td>3</td>' +
+            '<td>162.00</td>' +
+            '<td>486.00</td>' +
+            '<td>72.90</td>' +
+            '<td>-</td>' +
+            '<td>558.90</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>4</td>' +
+            '<td>000026</td>' +
+            '<td style="text-align:right; font-weight:600;">على العناصر (UPV) إجراء اختبار الموجات فوق الصوتية الانشائية للتأكد من تجانس الخرسانة وخلوها من العيوب والتحقق من احتمالية امتداد الشروخ.</td>' +
+            '<td>اختبار</td>' +
+            '<td>5</td>' +
+            '<td>250.00</td>' +
+            '<td>1,250.00</td>' +
+            '<td>187.50</td>' +
+            '<td>-</td>' +
+            '<td>1,437.50</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>5</td>' +
+            '<td>000012</td>' +
+            '<td style="text-align:right; font-weight:600;">للكشف عن (half-cell) إجراء اختبار فحص نصف الخلية احتمالية انتشار الصدأ في حديد التسليح بمناطق الشروخ وتسريب المياه بسقف القبو.</td>' +
+            '<td>اختبار</td>' +
+            '<td>2</td>' +
+            '<td>279.00</td>' +
+            '<td>558.00</td>' +
+            '<td>83.70</td>' +
+            '<td>-</td>' +
+            '<td>641.70</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td>6</td>' +
+            '<td>000026</td>' +
+            '<td style="text-align:right; font-weight:600;">إجراء إعادة تحقق إنشائي لمنطقة الشروخ بسقف القبو بمنطقة الشروخ، بالاعتماد على المخططات الإنشائية المتوفرة، والنموذج الإنشائي القائم، ونتائج الاختبارات الحقلية والمعملية المنفذة، وذلك بهدف مراجعة وتأكيد الأحمال الفعلية القائمة على السقف والعناصر الإنشائية المرتبطة به. مع إعداد التفاصيل والمخططات اللازمة لأعمال معالجة الشروخ، وإصدار تقرير فني يتضمن مدخلات إعادة التحقق، نتائج التحليل، تقييم حالة الشروخ، طريقة المعالجة المقترحة، والاستنتاجات والتوصيات الفنية اللازمة.</td>' +
+            '<td>تقرير</td>' +
+            '<td>0.5</td>' +
+            '<td>4,150.00</td>' +
+            '<td>2,075.00</td>' +
+            '<td>183.82</td>' +
+            '<td style="color:#dc2626; font-weight:700;">849.53</td>' +
+            '<td>1,409.29</td>' +
             '</tr>' +
             '</tbody>' +
             '</table>';
@@ -1226,78 +1331,6 @@
 
         var tbl = wrap.querySelector("table") || document.getElementById("listing_table");
         if (!tbl || !tbl.rows || tbl.rows.length === 0) return;
-
-        var headerRow = tbl.rows[0];
-        var taxRateIdx = -1;
-        var taxAmtIdx = -1;
-        var discIdx = -1;
-        var lastIdx = headerRow.cells.length - 1;
-
-        for (var c = 0; c < headerRow.cells.length; c++) {
-          var txt = headerRow.cells[c].innerText.toLowerCase().trim();
-          if (txt.indexOf("نسبة الضريبة") !== -1 || txt.indexOf("معدل الضريبة") !== -1 || txt.indexOf("tax rate") !== -1 || txt.indexOf("vat rate") !== -1 || (txt.indexOf("ضريبة") !== -1 && txt.indexOf("%") !== -1)) {
-            taxRateIdx = c;
-          } else if (txt.indexOf("مبلغ الضريبة") !== -1 || txt.indexOf("قيمة الضريبة") !== -1 || txt.indexOf("ضريبة") !== -1 || txt.indexOf("tax amount") !== -1 || txt.indexOf("vat amount") !== -1) {
-            taxAmtIdx = c;
-          } else if (txt.indexOf("خصم") !== -1 || txt.indexOf("discount") !== -1) {
-            discIdx = c;
-          }
-        }
-
-        // Set last column header with lighter English color
-        headerRow.cells[lastIdx].innerHTML = "الإجمالي شامل الضريبة<br><span style='font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;'>Total Incl. VAT</span>";
-
-        // Check if discount exists
-        var hasDiscount = false;
-        if (discIdx !== -1) {
-          for (var r = 1; r < tbl.rows.length; r++) {
-            var cell = tbl.rows[r].cells[discIdx];
-            if (cell) {
-              var num = parseFloat(cell.innerText.replace(/[^0-9.]/g, ""));
-              if (num > 0) { hasDiscount = true; break; }
-            }
-          }
-        }
-        var discSummary = document.getElementById("dispDiscount");
-        if (discSummary) {
-          var rawD = discSummary.innerText.replace(/[^0-9.]/g, "");
-          var totalDisc = parseFloat(rawD);
-          if (!isNaN(totalDisc) && totalDisc > 0) hasDiscount = true;
-        }
-
-        // Update Tax Amount header with lighter English color
-        if (taxAmtIdx !== -1) {
-          headerRow.cells[taxAmtIdx].innerHTML = "مبلغ الضريبة (15%)<br><span style='font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;'>VAT Amount (15%)</span>";
-        }
-
-        // Remove Tax Rate column and conditionally remove Discount column from items table
-        var toDelete = [];
-        if (taxRateIdx !== -1) toDelete.push(taxRateIdx);
-        if (discIdx !== -1 && !hasDiscount) toDelete.push(discIdx);
-
-        toDelete.sort(function (a, b) { return b - a; });
-        toDelete.forEach(function (idx) {
-          for (var r = 0; r < tbl.rows.length; r++) {
-            if (tbl.rows[r].cells.length > idx) {
-              tbl.rows[r].deleteCell(idx);
-            }
-          }
-        });
-
-        // Control Totals Table discount row & subtotal label
-        var dRow = document.getElementById("rowDiscount");
-        var lblSubAr = document.getElementById("lblSubtotalAr");
-        var lblSubEn = document.getElementById("lblSubtotalEn");
-
-        if (hasDiscount) {
-          if (dRow) dRow.style.display = "";
-          if (lblSubAr) lblSubAr.innerText = "المجموع الفرعي (قبل الخصم)";
-          if (lblSubEn) lblSubEn.innerText = "Subtotal (Excl. Discount)";
-        } else {
-          if (dRow) dRow.style.display = "none";
-          if (lblSubAr) lblSubAr.innerText = "المجموع قبل الضريبة";
-          if (lblSubEn) lblSubEn.innerText = "Total Before VAT";
-        }
 
         // Add serial column if missing
         var firstTh = tbl.rows[0].cells[0];
@@ -1313,6 +1346,50 @@
               c.innerText = i;
             }
           }
+        }
+      }
+
+      // Format financial totals
+      function formatTotals() {
+        var s = document.getElementById("dispSubtotal");
+        var d = document.getElementById("dispDiscount");
+        var v = document.getElementById("dispVat");
+        var t = document.getElementById("total");
+        var dRow = document.getElementById("rowDiscount");
+        var lblSubAr = document.getElementById("lblSubtotalAr");
+        var lblSubEn = document.getElementById("lblSubtotalEn");
+
+        function cleanAmount(el, fallbackVal) {
+          if (!el) return "";
+          var txt = el.innerText.trim();
+          if (txt.indexOf("{%") !== -1 || txt === "") {
+            el.innerText = fallbackVal;
+            return fallbackVal;
+          }
+          // Remove duplicate currencies
+          txt = txt.replace(/SAR\s*SAR/gi, "SAR").replace(/ر\.س\s*SAR/gi, "SAR");
+          if (txt.indexOf("SAR") === -1 && txt.indexOf("ر.س") === -1) {
+            txt += " SAR";
+          }
+          el.innerText = txt;
+          return txt;
+        }
+
+        cleanAmount(s, "5,086.50 SAR");
+        var discTxt = cleanAmount(d, "849.53 SAR");
+        cleanAmount(v, "635.55 SAR");
+        cleanAmount(t, "4,872.52 SAR");
+
+        // Check if discount row should be displayed
+        var discNum = parseFloat(discTxt.replace(/[^0-9.]/g, ""));
+        if (!isNaN(discNum) && discNum > 0) {
+          if (dRow) dRow.style.display = "";
+          if (lblSubAr) lblSubAr.innerText = "المجموع الفرعي (قبل الخصم)";
+          if (lblSubEn) lblSubEn.innerText = "Subtotal (Excl. Discount)";
+        } else {
+          if (dRow) dRow.style.display = "none";
+          if (lblSubAr) lblSubAr.innerText = "المجموع قبل الضريبة";
+          if (lblSubEn) lblSubEn.innerText = "Total Before VAT";
         }
       }
 
@@ -1341,41 +1418,56 @@
 
       function updateTafqeet() {
         try {
+          var arEl = document.getElementById("dispTafqeetAr");
+          var enEl = document.getElementById("dispTafqeetEn");
+
           var tel = document.getElementById("total");
-          var raw = tel ? tel.innerText.replace(/[^0-9.]/g, "") : "1150";
-          if (!raw || isNaN(parseFloat(raw))) raw = "1150.00";
+          var raw = tel ? tel.innerText.replace(/[^0-9.]/g, "") : "4872.52";
+          if (!raw || isNaN(parseFloat(raw))) raw = "4872.52";
           var num = parseFloat(raw).toFixed(2);
           var r = parseInt(num.split(".")[0], 10);
           var h2 = parseInt(num.split(".")[1], 10);
           var arT = toAr(r) + " ريالاً سعودياً" + (h2 > 0 ? " و" + toAr(h2) + " هللة" : "") + " فقط لا غير";
           var enT = toEn(r) + " Saudi Riyals" + (h2 > 0 ? " and " + toEn(h2) + " Halalas" : "") + " Only";
-          var arEl = document.getElementById("dispTafqeetAr");
-          var enEl = document.getElementById("dispTafqeetEn");
-          if (arEl) arEl.innerText = arT;
-          if (enEl) enEl.innerText = enT;
+
+          if (arEl && (arEl.innerText.indexOf("{%") !== -1 || arEl.innerText.trim() === "" || arEl.innerText === "--")) {
+            arEl.innerText = arT;
+          }
+          if (enEl && (enEl.innerText.indexOf("{%") !== -1 || enEl.innerText.trim() === "" || enEl.innerText === "--")) {
+            enEl.innerText = enT;
+          }
         } catch (e) { }
       }
 
       // Invoice title type adapter
       function checkInvoiceType() {
         try {
-          var t = document.querySelector(".title");
-          if (t) {
-            var txt = t.innerText || "";
-            if (txt.indexOf("إشعار دائن") !== -1) {
-              document.querySelector(".arabicTarget").innerText = "إشعار دائن";
-              document.querySelector(".englishTarget").innerText = "/ CREDIT NOTE";
-            } else if (txt.indexOf("مرتجع") !== -1) {
-              document.querySelector(".arabicTarget").innerText = "فاتورة مرتجعة";
-              document.querySelector(".englishTarget").innerText = "/ REFUND INVOICE";
-            } else if (txt.indexOf("مسودة") !== -1 || txt.toLowerCase().indexOf("draft") !== -1 || txt.indexOf("pro forma") !== -1 || txt.indexOf("proforma") !== -1) {
-              document.querySelector(".arabicTarget").innerText = "مسودة فاتورة";
-              document.querySelector(".englishTarget").innerText = "/ DRAFT INVOICE";
-            } else {
-              // Explicit tax invoice (default)
-              document.querySelector(".arabicTarget").innerText = "فاتورة ضريبية";
-              document.querySelector(".englishTarget").innerText = "/ TAX INVOICE";
+          var titleElem = document.getElementById("invTitleAr");
+          var enElem = document.getElementById("invTitleEn");
+          var statusPill = document.querySelector(".status-pill");
+          var invNo = document.getElementById("invNumber") ? document.getElementById("invNumber").innerText.toLowerCase() : "";
+
+          var txt = titleElem ? titleElem.innerText.trim() : "";
+          if (txt.indexOf("{%") !== -1 || txt === "") {
+            txt = "فاتورة ضريبية";
+            if (titleElem) titleElem.innerText = txt;
+          }
+
+          if (txt.indexOf("مسودة") !== -1 || txt.toLowerCase().indexOf("draft") !== -1 || invNo.indexOf("draft") !== -1) {
+            if (titleElem && titleElem.innerText.indexOf("{%") === -1) titleElem.innerText = "مسودة فاتورة";
+            if (enElem) enElem.innerHTML = "&nbsp;/ DRAFT INVOICE";
+            if (statusPill) {
+              statusPill.innerText = "مسودة | DRAFT";
+              statusPill.style.background = "#64748b";
             }
+          } else if (txt.indexOf("إشعار دائن") !== -1 || txt.toLowerCase().indexOf("credit") !== -1) {
+            if (titleElem && titleElem.innerText.indexOf("{%") === -1) titleElem.innerText = "إشعار دائن";
+            if (enElem) enElem.innerHTML = "&nbsp;/ CREDIT NOTE";
+          } else if (txt.indexOf("مرتجع") !== -1 || txt.toLowerCase().indexOf("refund") !== -1) {
+            if (titleElem && titleElem.innerText.indexOf("{%") === -1) titleElem.innerText = "فاتورة مرتجعة";
+            if (enElem) enElem.innerHTML = "&nbsp;/ REFUND INVOICE";
+          } else {
+            if (enElem) enElem.innerHTML = "&nbsp;/ TAX INVOICE";
           }
         } catch (e) { }
       }
@@ -1385,6 +1477,7 @@
         cleanMetaInfo();
         applyBranchInfo();
         processItemsTable();
+        formatTotals();
         updateTafqeet();
         checkInvoiceType();
       } catch (err) {
