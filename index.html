@@ -38,7 +38,6 @@
        ========================================= */
     .page-wrap {
       width: 794px;
-      height: 1122px;
       min-height: 1122px;
       margin: 0 auto;
       background: #ffffff;
@@ -47,7 +46,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden;
     }
 
     /* =========================================
@@ -82,7 +80,7 @@
        BODY CONTENT
        ========================================= */
     .body-content {
-      padding: 10px 20px 12px 20px;
+      padding: 6px 18px 6px 18px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -96,7 +94,7 @@
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       background: #f3fafb;
       border: 1px solid #e6f6f7;
       border-right: 5px solid #00737a;
@@ -150,7 +148,7 @@
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       background: #f8fafc;
       border: 1px solid #cbd5e1;
       border-radius: 4px;
@@ -196,7 +194,7 @@
     .parties-row {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
 
     .parties-row td {
@@ -349,7 +347,7 @@
        ========================================= */
     .items-wrap {
       border: 1px solid #00737a;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       border-radius: 4px;
       overflow: hidden;
     }
@@ -360,7 +358,7 @@
     table.listing-table {
       width: 100% !important;
       border-collapse: collapse !important;
-      font-size: 9px !important;
+      font-size: 8.5px !important;
       font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
       direction: rtl !important;
       border: 1px solid #00737a !important;
@@ -381,10 +379,10 @@
     table.listing-table thead td {
       background-color: #00737a !important;
       color: #ffffff !important;
-      padding: 5px 4px !important;
+      padding: 4px 3px !important;
       text-align: center !important;
       font-weight: 700 !important;
-      font-size: 9px !important;
+      font-size: 8.5px !important;
       border: 1px solid #005a60 !important;
       line-height: 1.2 !important;
     }
@@ -392,10 +390,10 @@
     #listing_table tbody td,
     #items-list table tbody td,
     table.listing-table tbody td {
-      padding: 5px 4px !important;
+      padding: 3.5px 3px !important;
       border: 1px solid #e2e8f0 !important;
       text-align: center !important;
-      font-size: 9px !important;
+      font-size: 8.5px !important;
       color: #0f172a !important;
       vertical-align: middle !important;
     }
@@ -583,33 +581,36 @@
       border-collapse: collapse;
       background: transparent;
       border: none;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .qr-stamp-row td {
-      padding: 2px 4px;
+      padding: 1px 4px;
       vertical-align: middle;
       border: none;
     }
 
     .qr-holder {
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .qr-holder img,
     .qr-holder svg {
-      width: 95px;
-      height: 95px;
+      width: 85px;
+      height: 85px;
       display: block;
       margin: 0 auto;
     }
 
     .qr-lbl {
-      font-size: 7px;
+      font-size: 6.5px;
       color: #64748b;
       font-weight: 700;
       text-align: center;
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     /* Official Stamp Card (No Borders - Stamp Image Only) */
@@ -624,10 +625,12 @@
     }
 
     .stamp-img {
-      width: 90px;
-      height: 90px;
+      width: 125px;
+      height: 85px;
+      max-height: 90px;
       object-fit: contain;
       display: block;
+      margin: 0 auto;
     }
 
     /* TOTALS TABLE */
@@ -769,19 +772,16 @@
 
       .page-wrap {
         width: 794px !important;
-        height: 1122px !important;
         min-height: 1122px !important;
         margin: 0 auto !important;
         box-shadow: none !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        overflow: hidden !important;
       }
 
       .body-content {
         flex: 1 !important;
-        overflow: hidden !important;
       }
 
       .footer-banner {
