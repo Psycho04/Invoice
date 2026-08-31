@@ -17,11 +17,10 @@
       font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
       font-size: 10px;
       color: #0f172a;
-      background: #ffffff;
+      background: #f1f5f9;
       direction: rtl;
       margin: 0;
       padding: 0;
-      width: 100%;
     }
 
     /* =========================================
@@ -31,17 +30,15 @@
       color: #94a3b8 !important;
       font-size: 7.5px;
       font-weight: 500;
-      display: inline-block;
-      direction: ltr;
     }
 
     /* =========================================
        MAIN WRAPPER — 794px = A4 at 96dpi (matches Daftra PDF)
-       Pinned Footer at the bottom of page
+       Pinned Footer at the very bottom of A4 page
        ========================================= */
     .page-wrap {
-      width: 100%;
-      max-width: 794px;
+      width: 794px;
+      height: 1122px;
       min-height: 1122px;
       margin: 0 auto;
       background: #ffffff;
@@ -50,7 +47,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-sizing: border-box;
+      overflow: hidden;
     }
 
     /* =========================================
@@ -85,7 +82,7 @@
        BODY CONTENT
        ========================================= */
     .body-content {
-      padding: 10px 18px 12px 18px;
+      padding: 10px 20px 12px 20px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -113,25 +110,25 @@
     }
 
     .main-title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 800;
       color: #00737a;
     }
 
     .main-title-branch {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       color: #c09755;
     }
 
     .main-title-en {
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 600;
       color: #94a3b8;
     }
 
     .main-title-branch-en {
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 600;
       color: #bfa472;
     }
@@ -141,7 +138,7 @@
       color: #fff;
       padding: 3px 10px;
       border-radius: 10px;
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 700;
       display: inline-block;
     }
@@ -172,19 +169,18 @@
 
     .meta-lbl {
       color: #475569;
-      font-size: 8px;
+      font-size: 8.5px;
       font-weight: 700;
     }
 
     .meta-lbl-en {
       color: #94a3b8;
-      font-size: 7px;
+      font-size: 7.5px;
       font-weight: 500;
-      display: block;
     }
 
     .meta-val {
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 800;
       color: #0f172a;
       margin-top: 2px;
@@ -195,7 +191,7 @@
     }
 
     /* =========================================
-       SELLER / BUYER CARDS
+       SELLER / BUYER CARDS (TOP OUTLINE BORDER STYLE)
        ========================================= */
     .parties-row {
       width: 100%;
@@ -221,6 +217,7 @@
       border-collapse: separate;
       border-spacing: 0;
       width: 100%;
+      height: 100%;
       background: #ffffff;
       border-radius: 4px;
       overflow: hidden;
@@ -238,7 +235,7 @@
       background: #f8fafc;
       color: #00737a;
       padding: 4px 8px;
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 800;
       border-bottom: 1px solid #f1f5f9;
     }
@@ -247,7 +244,7 @@
       background: #f8fafc;
       color: #c09755;
       padding: 4px 8px;
-      font-size: 9.5px;
+      font-size: 10px;
       font-weight: 800;
       border-bottom: 1px solid #f1f5f9;
     }
@@ -265,11 +262,11 @@
     }
 
     .party-badge-seller {
-      font-size: 7px;
+      font-size: 7.5px;
       background: #f0fdfa;
       color: #00737a;
       border: 1px solid #99f6e4;
-      padding: 1px 5px;
+      padding: 1px 6px;
       border-radius: 3px;
       font-weight: 800;
       letter-spacing: 0.5px;
@@ -277,11 +274,11 @@
     }
 
     .party-badge-buyer {
-      font-size: 7px;
+      font-size: 7.5px;
       background: #faf5eb;
       color: #c09755;
       border: 1px solid #fed7aa;
-      padding: 1px 5px;
+      padding: 1px 6px;
       border-radius: 3px;
       font-weight: 800;
       letter-spacing: 0.5px;
@@ -301,7 +298,7 @@
     }
 
     .card-subtitle-en {
-      font-size: 7.5px;
+      font-size: 8px;
       color: #94a3b8;
       margin-bottom: 3px;
       font-weight: 500;
@@ -315,7 +312,7 @@
 
     .card-row td {
       padding: 2px 0;
-      font-size: 8.5px;
+      font-size: 9px;
       border-bottom: 1px dashed #f1f5f9;
     }
 
@@ -327,16 +324,14 @@
       color: #64748b;
       font-weight: 600;
       white-space: nowrap;
-      width: 44%;
-      text-align: right;
+      width: 42%;
     }
 
     .card-val {
       color: #0f172a;
       font-weight: 700;
       text-align: left;
-      width: 56%;
-      word-break: break-word;
+      width: 58%;
     }
 
     .vat-badge {
@@ -345,9 +340,8 @@
       padding: 0 4px;
       border-radius: 3px;
       font-weight: 700;
-      font-size: 8.5px;
+      font-size: 9px;
       color: #0f172a;
-      display: inline-block;
     }
 
     /* =========================================
@@ -358,26 +352,23 @@
       margin-bottom: 8px;
       border-radius: 4px;
       overflow: hidden;
-      width: 100%;
     }
 
+    /* Force override ALL Daftra default table styling */
     #listing_table,
     #items-list table,
-    .items-wrap table,
     table.listing-table {
       width: 100% !important;
       border-collapse: collapse !important;
-      font-size: 8.5px !important;
+      font-size: 9px !important;
       font-family: 'Cairo', Tahoma, Arial, sans-serif !important;
       direction: rtl !important;
-      border: none !important;
+      border: 1px solid #00737a !important;
       margin: 0 !important;
-      table-layout: auto !important;
     }
 
     #listing_table thead,
     #items-list table thead,
-    .items-wrap table thead,
     table.listing-table thead {
       background-color: #00737a !important;
     }
@@ -386,53 +377,63 @@
     #listing_table thead td,
     #items-list table thead th,
     #items-list table thead td,
-    .items-wrap table thead th,
-    .items-wrap table thead td,
     table.listing-table thead th,
     table.listing-table thead td {
       background-color: #00737a !important;
       color: #ffffff !important;
-      padding: 5px 3px !important;
+      padding: 5px 4px !important;
       text-align: center !important;
       font-weight: 700 !important;
-      font-size: 8px !important;
+      font-size: 9px !important;
       border: 1px solid #005a60 !important;
       line-height: 1.2 !important;
-      white-space: normal !important;
     }
 
     #listing_table tbody td,
     #items-list table tbody td,
-    .items-wrap table tbody td,
     table.listing-table tbody td {
-      padding: 4px 3px !important;
+      padding: 5px 4px !important;
       border: 1px solid #e2e8f0 !important;
       text-align: center !important;
-      font-size: 8.5px !important;
+      font-size: 9px !important;
       color: #0f172a !important;
       vertical-align: middle !important;
     }
 
     #listing_table tbody tr:nth-child(even),
     #items-list table tbody tr:nth-child(even),
-    .items-wrap table tbody tr:nth-child(even),
     table.listing-table tbody tr:nth-child(even) {
       background-color: #f8fafc !important;
     }
 
-    /* Description column: align right */
-    #listing_table tbody td:nth-child(3),
-    #items-list table tbody td:nth-child(3),
-    .items-wrap table tbody td:nth-child(3),
-    table.listing-table tbody td:nth-child(3) {
-      text-align: right !important;
-      font-weight: 600 !important;
-      padding-right: 5px !important;
+    /* First column (serial #) */
+    #listing_table tbody td:first-child,
+    #items-list table tbody td:first-child,
+    table.listing-table tbody td:first-child {
+      font-weight: 700 !important;
+      color: #475569 !important;
+      width: 26px !important;
     }
 
-    /* Hide Daftra default secondary summary tables inside items list */
+    /* Description column - align right */
+    #listing_table tbody td:nth-child(2),
+    #items-list table tbody td:nth-child(2),
+    table.listing-table tbody td:nth-child(2) {
+      text-align: right !important;
+      font-weight: 600 !important;
+      padding-right: 6px !important;
+    }
+
+    /* Last column (total) - highlight in teal */
+    #listing_table tbody td:last-child,
+    #items-list table tbody td:last-child,
+    table.listing-table tbody td:last-child {
+      font-weight: 800 !important;
+      color: #00737a !important;
+    }
+
+    /* Hide Daftra's second default totals table */
     #items-list table:nth-of-type(2),
-    #items-list .listing-totals,
     .listing-totals {
       display: none !important;
     }
@@ -443,7 +444,7 @@
     .bottom-row {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .bottom-row td {
@@ -466,13 +467,13 @@
       background: #00737a;
       color: #ffffff;
       font-weight: 800;
-      font-size: 9px;
+      font-size: 9.5px;
       padding: 4px 8px;
       border-bottom: 1px solid #005a60;
     }
 
     .bank-card-body {
-      padding: 5px 8px;
+      padding: 6px 8px;
     }
 
     .bank-row {
@@ -482,27 +483,27 @@
 
     .bank-row td {
       padding: 2px 4px;
-      font-size: 8.5px;
+      font-size: 9px;
       vertical-align: top;
     }
 
     .bank-lbl {
       color: #475569;
       font-weight: 700;
-      font-size: 8px;
+      font-size: 8.5px;
       margin-bottom: 1px;
     }
 
     .bank-val {
       color: #0f172a;
       font-weight: 800;
-      font-size: 9px;
+      font-size: 9.5px;
     }
 
     .iban-box {
       background: #f0fdfa;
       border: 1px solid #99f6e4;
-      padding: 2px 5px;
+      padding: 2px 6px;
       border-radius: 3px;
       display: inline-block;
       margin-top: 1px;
@@ -511,7 +512,7 @@
     .iban-text {
       color: #0f766e;
       font-weight: 900;
-      font-size: 9.5px;
+      font-size: 10px;
       font-family: 'Consolas', 'Courier New', monospace, 'Cairo';
       letter-spacing: 0.8px;
       direction: ltr;
@@ -521,51 +522,51 @@
     /* Terms & Notes */
     .terms-box {
       border: 1px dashed #cbd5e1;
-      padding: 4px 8px;
+      padding: 5px 8px;
       background: #f8fafc;
-      font-size: 7.5px;
+      font-size: 8px;
       color: #475569;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       border-radius: 4px;
     }
 
     .terms-title {
       font-weight: 800;
       color: #00737a;
-      font-size: 8px;
-      margin-bottom: 2px;
+      font-size: 8.5px;
+      margin-bottom: 3px;
     }
 
     .terms-list {
       list-style-type: disc;
-      margin: 0 0 2px 0;
+      margin: 0 0 3px 0;
       padding-right: 14px;
       padding-left: 0;
-      font-size: 7px;
+      font-size: 7.5px;
       color: #334155;
       font-weight: 600;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .terms-list li {
-      margin-bottom: 1px;
+      margin-bottom: 1.5px;
     }
 
     .terms-footer-msg {
       color: #9d7736;
       font-weight: 700;
       text-align: center;
-      margin-top: 3px;
-      font-size: 7.5px;
+      margin-top: 4px;
+      font-size: 8px;
     }
 
-    /* QR + Stamp row */
+    /* QR + Stamp row (Borderless) */
     .qr-stamp-row {
       width: 100%;
       border-collapse: collapse;
       background: transparent;
       border: none;
-      margin-top: 3px;
+      margin-top: 4px;
     }
 
     .qr-stamp-row td {
@@ -576,17 +577,12 @@
 
     .qr-holder {
       text-align: center;
-      width: 95px;
-      height: 95px;
-      margin: 0 auto;
     }
 
     .qr-holder img,
     .qr-holder svg {
-      width: 95px !important;
-      height: 95px !important;
-      max-width: 95px !important;
-      max-height: 95px !important;
+      width: 95px;
+      height: 95px;
       display: block;
       margin: 0 auto;
     }
@@ -599,21 +595,22 @@
       margin-top: 2px;
     }
 
-    /* Official Stamp Card */
+    /* Official Stamp Card (No Borders - Stamp Image Only) */
     .stamp-box {
       border: none;
       padding: 0;
       text-align: center;
       background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .stamp-img {
-      max-width: 130px !important;
-      max-height: 80px !important;
-      width: auto !important;
-      height: auto !important;
-      display: inline-block !important;
-      object-fit: contain !important;
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      display: block;
     }
 
     /* TOTALS TABLE */
@@ -627,7 +624,7 @@
     }
 
     .totals-table tr td {
-      padding: 4px 7px;
+      padding: 4px 8px;
       border-bottom: 1px solid #e2e8f0;
     }
 
@@ -638,12 +635,12 @@
     .totals-lbl {
       color: #334155;
       font-weight: 600;
-      font-size: 8.5px;
+      font-size: 9px;
     }
 
     .totals-lbl-en {
       color: #94a3b8;
-      font-size: 7px;
+      font-size: 7.5px;
       font-weight: 500;
       display: block;
     }
@@ -651,13 +648,13 @@
     .totals-val {
       text-align: left;
       font-weight: 700;
-      font-size: 9px;
+      font-size: 9.5px;
       color: #0f172a;
       white-space: nowrap;
     }
 
     .totals-grand {
-      background: #00737a;
+      background: linear-gradient(90deg, #00737a, #00939d);
     }
 
     .totals-grand td {
@@ -666,19 +663,19 @@
 
     .totals-grand .totals-lbl {
       color: #ffffff;
-      font-size: 9.5px;
+      font-size: 10.5px;
       font-weight: 800;
     }
 
     .totals-grand .totals-lbl-en {
       color: rgba(255, 255, 255, 0.75);
-      font-size: 7px;
+      font-size: 7.5px;
       font-weight: 500;
     }
 
     .totals-grand .totals-val {
       color: #ffffff;
-      font-size: 11.5px;
+      font-size: 12.5px;
       font-weight: 900;
     }
 
@@ -686,28 +683,28 @@
     .tafqeet-box {
       background: #faf5eb;
       border: 1px solid #c09755;
-      padding: 4px 7px;
-      margin-top: 4px;
+      padding: 4px 8px;
+      margin-top: 5px;
       border-radius: 4px;
     }
 
     .tafqeet-lbl {
       color: #9d7736;
       font-weight: 700;
-      font-size: 7.5px;
+      font-size: 8px;
       margin-bottom: 2px;
     }
 
     .tafqeet-ar {
       color: #0f172a;
       font-weight: 700;
-      font-size: 8px;
+      font-size: 8.5px;
       line-height: 1.3;
     }
 
     .tafqeet-en {
       color: #94a3b8;
-      font-size: 7.5px;
+      font-size: 8px;
       margin-top: 1px;
       line-height: 1.2;
       font-weight: 500;
@@ -716,6 +713,29 @@
     /* =========================================
        PRINT RULES — Guaranteed A4 Bottom Footer
        ========================================= */
+    /* Project name bar above items table */
+    .project-name-bar {
+      background: linear-gradient(90deg, #f0fdfa, #e6f6f7);
+      border: 1px solid #00737a;
+      border-radius: 4px;
+      padding: 4px 10px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .project-name-label {
+      color: #00737a;
+      font-weight: 800;
+      font-size: 8.5px;
+      white-space: nowrap;
+    }
+    .project-name-value {
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 9px;
+    }
+
     @page {
       size: A4 portrait;
       margin: 0mm;
@@ -729,11 +749,20 @@
       }
 
       .page-wrap {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-height: 100vh !important;
-        margin: 0 !important;
+        width: 794px !important;
+        height: 1122px !important;
+        min-height: 1122px !important;
+        margin: 0 auto !important;
         box-shadow: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        overflow: hidden !important;
+      }
+
+      .body-content {
+        flex: 1 !important;
+        overflow: hidden !important;
       }
 
       .footer-banner {
@@ -761,8 +790,8 @@
     <!-- BODY CONTENT -->
     <div class="body-content">
 
-      <!-- Hidden fields for Daftra branch and title detection -->
-      <div id="rawInvoiceTitle" style="display:none;">{%invoice_title%}</div>
+      <!-- Hidden title for ERP type detection & Daftra branch tags -->
+      <div class="title" style="display:none;">{%invoice_title%}</div>
       <div id="rawBranchName" style="display:none;">{%branch_name%}</div>
       <div id="rawBranch" style="display:none;">{%branch%}</div>
 
@@ -770,15 +799,16 @@
       <table class="title-row" cellpadding="0" cellspacing="0">
         <tr>
           <td style="text-align:right; width:55%;">
-            <span class="main-title" id="invTitleAr">فاتورة ضريبية</span>
+            <span class="main-title arabicTarget">فاتورة ضريبية</span>
             <span class="main-title-branch" id="branchTitleAr"> - فرع الرياض</span>
-            <span class="main-title-en" id="invTitleEn">&nbsp;/ TAX INVOICE</span>
+            <span class="main-title-en englishTarget">&nbsp;/ TAX INVOICE</span>
             <span class="main-title-branch-en" id="branchTitleEn"> - RIYADH</span>
           </td>
           <td style="text-align:left; width:45%;">
-            <span class="status-pill" id="statusPill">مستحقة الدفع | DUE</span>
+            <span class="status-pill">مستحقة الدفع | DUE</span>
             &nbsp;
-            <span style="font-size:8px; color:#64748b;">فاتورة ضريبية قياسية <span class="lbl-en" dir="ltr">(B2B / B2C)</span></span>
+            <span style="font-size:8.5px; color:#64748b;">فاتورة ضريبية قياسية <span class="lbl-en">(B2B /
+                B2C)</span></span>
           </td>
         </tr>
       </table>
@@ -788,28 +818,28 @@
         <tr>
           <td width="25%">
             <div class="meta-lbl">رقم الفاتورة</div>
-            <div class="meta-lbl-en" dir="ltr">Invoice No.</div>
-            <div class="meta-val green" id="invNumber">{%invoice_no%}</div>
+            <div class="meta-lbl-en">Invoice No.</div>
+            <div class="meta-val green titleNo" id="invNumber">{%invoice_no%}</div>
           </td>
           <td width="25%">
             <div class="meta-lbl">تاريخ الفاتورة</div>
-            <div class="meta-lbl-en" dir="ltr">Invoice Date</div>
+            <div class="meta-lbl-en">Invoice Date</div>
             <div class="meta-val" id="invDate">{%invoice_date%}</div>
           </td>
           <td width="25%">
             <div class="meta-lbl">رقم أمر الشراء</div>
-            <div class="meta-lbl-en" dir="ltr">PO Number</div>
-            <div class="meta-val" id="poNumber">{%po_number%}{%purchase_order%}{%order_no%}</div>
+            <div class="meta-lbl-en">PO Number</div>
+            <div class="meta-val" id="poNumber">{%po_number%}</div>
           </td>
           <td width="25%">
             <div class="meta-lbl">رقم المشروع</div>
-            <div class="meta-lbl-en" dir="ltr">Project Number</div>
-            <div class="meta-val" id="projNumber">{%project_no%}{%project_number%}{%project_code%}{%project_id%}</div>
+            <div class="meta-lbl-en">Project Number</div>
+            <div class="meta-val" id="projNumber">{%project_number%}</div>
           </td>
         </tr>
       </table>
 
-      <!-- ============ 3. SELLER / BUYER CARDS ============ -->
+      <!-- ============ 3. SELLER / BUYER CARDS (TOP OUTLINE STYLE) ============ -->
       <table class="parties-row" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
         <tr style="vertical-align:top;">
           <!-- SELLER CARD -->
@@ -832,26 +862,26 @@
               <tr style="height:100%;">
                 <td class="card-body" style="vertical-align:top;">
                   <div class="card-name">شركة فحص التربة للإستشارات الهندسية (جسات)</div>
-                  <div class="card-subtitle-en" dir="ltr">Fahs Alturba Company for Engineering Consultancy (GSSAAT)</div>
+                  <div class="card-subtitle-en">Fahs Alturba Company for Engineering Consultancy (GSSAAT)</div>
                   <table class="card-row" cellpadding="0" cellspacing="0">
                     <tr>
-                      <td class="card-lbl">الرقم الضريبي <span class="lbl-en" dir="ltr">(VAT ID):</span></td>
+                      <td class="card-lbl">الرقم الضريبي <span class="lbl-en">(VAT ID):</span></td>
                       <td class="card-val"><span class="vat-badge">312662018500003</span></td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">الرقم الموحد <span class="lbl-en" dir="ltr">(Unified No.):</span></td>
+                      <td class="card-lbl">الرقم الموحد <span class="lbl-en">(Unified No.):</span></td>
                       <td class="card-val">7016895893</td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">العنوان <span class="lbl-en" dir="ltr">(Address):</span></td>
+                      <td class="card-lbl">العنوان <span class="lbl-en">(Address):</span></td>
                       <td class="card-val" id="sellerAddress">شارع السلطان قابوس، حي المعيزلة، الرياض</td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">الرمز البريدي <span class="lbl-en" dir="ltr">(Postal Code):</span></td>
+                      <td class="card-lbl">الرمز البريدي <span class="lbl-en">(Postal Code):</span></td>
                       <td class="card-val" id="sellerPostalCode">13234</td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">رقم المبنى <span class="lbl-en" dir="ltr">(Building No.):</span></td>
+                      <td class="card-lbl">رقم المبنى <span class="lbl-en">(Building No.):</span></td>
                       <td class="card-val" id="sellerBuildingNo">2898</td>
                     </tr>
                   </table>
@@ -880,31 +910,31 @@
               <tr style="height:100%;">
                 <td class="card-body" style="vertical-align:top;">
                   <div class="card-name" id="buyerName">{%client_business_name%}</div>
-                  <div class="card-subtitle-en" dir="ltr">Customer / Client</div>
+                  <div class="card-subtitle-en">Customer / Client</div>
                   <table class="card-row" cellpadding="0" cellspacing="0">
                     <tr>
-                      <td class="card-lbl">الرقم الضريبي <span class="lbl-en" dir="ltr">(VAT ID):</span></td>
-                      <td class="card-val"><span class="vat-badge" id="buyerVatId">{%client_bn1%}</span></td>
+                      <td class="card-lbl">الرقم الضريبي <span class="lbl-en">(VAT ID):</span></td>
+                      <td class="card-val"><span class="vat-badge">{%client_bn1%}</span></td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">السجل التجاري <span class="lbl-en" dir="ltr">(CR No.):</span></td>
-                      <td class="card-val" id="buyerCrNo">{%client_bn2%}</td>
+                      <td class="card-lbl">السجل التجاري <span class="lbl-en">(CR No.):</span></td>
+                      <td class="card-val">{%client_bn2%}</td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">العنوان <span class="lbl-en" dir="ltr">(Address):</span></td>
-                      <td class="card-val" id="buyerAddress">{%client_full_address%}</td>
+                      <td class="card-lbl">العنوان <span class="lbl-en">(Address):</span></td>
+                      <td class="card-val">{%client_full_address%}</td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">الرمز البريدي <span class="lbl-en" dir="ltr">(Postal Code):</span></td>
+                      <td class="card-lbl">الرمز البريدي <span class="lbl-en">(Postal Code):</span></td>
                       <td class="card-val" id="buyerPostalCode">{%client_postal_code%}</td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">رقم المبنى <span class="lbl-en" dir="ltr">(Building No.):</span></td>
+                      <td class="card-lbl">رقم المبنى <span class="lbl-en">(Building No.):</span></td>
                       <td class="card-val" id="buyerBuildingNo">{%client_building_no%}</td>
                     </tr>
                     <tr>
-                      <td class="card-lbl">اسم المشروع <span class="lbl-en" dir="ltr">(Project Name):</span></td>
-                      <td class="card-val" id="buyerProjectName">{%project_name%}{%project%}</td>
+                      <td class="card-lbl">اسم المشروع <span class="lbl-en">(Project Name):</span></td>
+                      <td class="card-val" id="buyerProjectName">{%project_name%}</td>
                     </tr>
                   </table>
                 </td>
@@ -914,7 +944,11 @@
         </tr>
       </table>
 
-      <!-- ============ 4. ITEMS TABLE (DAFTRA ERP) ============ -->
+      <!-- ============ 4. PROJECT NAME BAR + ITEMS TABLE (DAFTRA ERP) ============ -->
+      <div class="project-name-bar" id="projectNameBar">
+        <span class="project-name-label">&#128204;&nbsp;اسم المشروع / Project Name:</span>
+        <span class="project-name-value" id="projectNameBarValue">{%project_name%}</span>
+      </div>
       <div class="items-wrap" id="items-list">
         {%items_list%}
       </div>
@@ -930,7 +964,9 @@
               <tr>
                 <td class="bank-card-header">
                   &#128179; &nbsp;معلومات الحساب البنكي <span
-                    style="color:rgba(255,255,255,0.75); font-size:7.5px; font-weight:500;" dir="ltr">/ Bank Details (تحويل بنكي / Bank Transfer)</span>
+                    style="color:rgba(255,255,255,0.75); font-size:8px; font-weight:500;">/ Bank Details</span>
+                  &nbsp;<span style="color:rgba(255,255,255,0.75); font-size:8px; font-weight:500;">(تحويل بنكي / Bank
+                    Transfer)</span>
                 </td>
               </tr>
               <tr>
@@ -938,23 +974,23 @@
                   <table class="bank-row" cellpadding="0" cellspacing="0">
                     <tr>
                       <td width="50%">
-                        <div class="bank-lbl">اسم البنك <span class="lbl-en" dir="ltr">(Bank Name):</span></div>
+                        <div class="bank-lbl">اسم البنك <span class="lbl-en">(Bank Name):</span></div>
                         <div class="bank-val">مصرف الراجحي / Al Rajhi Bank</div>
                       </td>
                       <td width="50%">
-                        <div class="bank-lbl">اسم الحساب <span class="lbl-en" dir="ltr">(Account Name):</span></div>
+                        <div class="bank-lbl">اسم الحساب <span class="lbl-en">(Account Name):</span></div>
                         <div class="bank-val">شركة فحص الاتربة للاستشارات الهندسية</div>
                       </td>
                     </tr>
                     <tr>
                       <td width="50%" style="padding-top:3px;">
-                        <div class="bank-lbl">رقم الحساب <span class="lbl-en" dir="ltr">(Account No.):</span></div>
+                        <div class="bank-lbl">رقم الحساب <span class="lbl-en">(Account No.):</span></div>
                         <div class="iban-box" style="background:#f8fafc; border-color:#cbd5e1;">
-                          <span class="iban-text" style="color:#0f172a; font-size:8.5px;">362000010006080054676</span>
+                          <span class="iban-text" style="color:#0f172a; font-size:9px;">362000010006080054676</span>
                         </div>
                       </td>
                       <td width="50%" style="padding-top:3px;">
-                        <div class="bank-lbl">رقم الآيبان <span class="lbl-en" dir="ltr">(IBAN):</span></div>
+                        <div class="bank-lbl">رقم الآيبان <span class="lbl-en">(IBAN):</span></div>
                         <div class="iban-box">
                           <span class="iban-text">SA77 8000 0362 6080 1005 4676</span>
                         </div>
@@ -962,9 +998,9 @@
                     </tr>
                     <tr>
                       <td colspan="2" style="padding-top:3px;">
-                        <div class="bank-lbl">شروط وطريقة الدفع <span class="lbl-en" dir="ltr">(Payment Terms):</span></div>
+                        <div class="bank-lbl">شروط وطريقة الدفع <span class="lbl-en">(Payment Terms):</span></div>
                         <div class="bank-val">مستحق خلال 30 يوماً / Due within 30 Days &nbsp;<span
-                            style="font-size:7.5px; color:#64748b; font-weight:600;" dir="ltr">(Net 30 Days)</span></div>
+                            style="font-size:8px; color:#64748b; font-weight:600;">(Net 30 Days)</span></div>
                       </td>
                     </tr>
                   </table>
@@ -974,7 +1010,7 @@
 
             <!-- Terms -->
             <div class="terms-box">
-              <div class="terms-title">الشروط والأحكام <span class="lbl-en" dir="ltr">/ Terms &amp; Conditions:</span></div>
+              <div class="terms-title">الشروط والأحكام <span class="lbl-en">/ Terms & Conditions:</span></div>
               <ul class="terms-list">
                 <li>يرجى سداد المبلغ الإجمالي للفاتورة في غضون الفترة المحددة أعلاه عبر الحساب البنكي المعتمد.</li>
                 <li>أي ملاحظات أو استفسارات حول الفاتورة يجب إخطارنا بها خطياً خلال 7 أيام من تاريخ الإصدار.</li>
@@ -982,17 +1018,17 @@
               </ul>
               <div id="footer">{%footer%}</div>
               <div class="terms-footer-msg">شكراً لتعاملكم واختياركم خدماتنا | <span
-                  style="color:#bfa472; font-weight:500;" dir="ltr">Thank you for your business!</span></div>
+                  style="color:#bfa472; font-weight:500;">Thank you for your business!</span></div>
             </div>
 
-            <!-- QR + 6. Official Stamp -->
+            <!-- QR + 6. Official Stamp (Borderless side-by-side) -->
             <table class="qr-stamp-row" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="110" style="text-align:center; padding:2px; vertical-align:middle;">
+                <td width="100" style="text-align:center; padding:2px; vertical-align:middle;">
                   <div class="qr-holder" id="zatcaQrCodeHolder">{%sa_qr_code_image%}</div>
-                  <div class="qr-lbl">رمز الاستجابة السريعة<br><span class="lbl-en" dir="ltr">(ZATCA QR)</span></div>
+                  <div class="qr-lbl">رمز الاستجابة السريعة<br><span class="lbl-en">(ZATCA QR)</span></div>
                 </td>
-                <td style="padding:2px 8px; vertical-align:middle; text-align:center;">
+                <td style="padding:2px 8px; vertical-align:middle;">
                   <div class="stamp-box">
                     <img id="branchStampImg"
                       src="https://raw.githubusercontent.com/Psycho04/Invoice/main/Assets/Stamp_Riyadh.jpg"
@@ -1004,7 +1040,7 @@
 
           </td>
 
-          <!-- RIGHT: Financial Totals -->
+          <!-- RIGHT: Financial Totals (Order: Subtotal -> [Discount if any] -> VAT -> Total) -->
           <td width="42%" style="padding-right:6px; vertical-align:top;">
 
             <table class="totals-table" cellpadding="0" cellspacing="0">
@@ -1012,44 +1048,44 @@
               <tr id="rowSubtotal">
                 <td class="totals-lbl">
                   <span id="lblSubtotalAr">المجموع قبل الضريبة</span>
-                  <span class="totals-lbl-en" id="lblSubtotalEn" dir="ltr">Total Before VAT</span>
+                  <span class="totals-lbl-en" id="lblSubtotalEn">Total Before VAT</span>
                 </td>
-                <td class="totals-val" id="dispSubtotal">{%invoice_subtotal%}{%subtotal%}</td>
+                <td class="totals-val" id="dispSubtotal">{%invoice_subtotal%} SAR</td>
               </tr>
 
               <!-- 2. Discount Amount (Only appears if there is a discount) -->
               <tr id="rowDiscount" style="display: none;">
                 <td class="totals-lbl">
                   إجمالي الخصم
-                  <span class="totals-lbl-en" dir="ltr">Total Discount</span>
+                  <span class="totals-lbl-en">Total Discount</span>
                 </td>
-                <td class="totals-val" id="dispDiscount" style="color:#dc2626;">{%item-discount-total%}{%discount_total%}</td>
+                <td class="totals-val" id="dispDiscount" style="color:#dc2626;">{%item-discount-total%} SAR</td>
               </tr>
 
               <!-- 3. VAT Amount (15%) -->
               <tr id="rowVat">
                 <td class="totals-lbl">
                   ضريبة القيمة المضافة (15%)
-                  <span class="totals-lbl-en" dir="ltr">Value Added Tax (15% VAT)</span>
+                  <span class="totals-lbl-en">Value Added Tax (15% VAT)</span>
                 </td>
-                <td class="totals-val" id="dispVat">{%tax-total%}{%tax_total%}</td>
+                <td class="totals-val" id="dispVat">{%tax-total%} SAR</td>
               </tr>
 
               <!-- 4. Total Including VAT -->
               <tr class="totals-grand" id="rowTotal">
                 <td class="totals-lbl">
                   المبلغ الإجمالي المستحق
-                  <span class="totals-lbl-en" dir="ltr">TOTAL AMOUNT DUE (INCL. VAT)</span>
+                  <span class="totals-lbl-en">TOTAL AMOUNT DUE (INCL. VAT)</span>
                 </td>
-                <td class="totals-val" id="total">{%invoice_total%}{%total%}</td>
+                <td class="totals-val" id="total">{%invoice_total%} SAR</td>
               </tr>
             </table>
 
             <!-- Tafqeet -->
             <div class="tafqeet-box">
-              <div class="tafqeet-lbl">المبلغ كتابة: <span class="lbl-en" dir="ltr">/ Amount in Words:</span></div>
-              <div class="tafqeet-ar" id="dispTafqeetAr">{%arabic_amount%}{%arabic_total%}{%tafqeet%}</div>
-              <div class="tafqeet-en" id="dispTafqeetEn" dir="ltr">{%english_amount%}{%english_total%}</div>
+              <div class="tafqeet-lbl">المبلغ كتابة: <span class="lbl-en">/ Amount in Words:</span></div>
+              <div class="tafqeet-ar arabicTfket" id="dispTafqeetAr">--</div>
+              <div class="tafqeet-en tfketEnglish" id="dispTafqeetEn">--</div>
             </div>
 
           </td>
@@ -1058,13 +1094,15 @@
 
     </div><!-- /body-content -->
 
-    <!-- FOOTER IMAGE BANNER -->
+    <!-- FOOTER IMAGE BANNER (Pinned to bottom of A4 page) -->
     <div class="footer-banner">
       <img src="https://raw.githubusercontent.com/Psycho04/Invoice/main/Assets/Footer.jpeg" alt="GSSAAT Footer"
         onerror="this.src='Assets/Footer.jpeg'">
     </div>
 
   </div><!-- /page-wrap -->
+
+
 
   <script type="text/javascript">
     (function () {
@@ -1108,26 +1146,36 @@
         }
       };
 
+      // Detect branch from Daftra variables, query parameters, or text content
       function getBranchKey() {
+        // 1. Check URL query param (e.g. ?branch=dammam or ?branch=jeddah)
         try {
           var params = new URLSearchParams(window.location.search);
           var qb = params.get("branch");
-          if (qb && BRANCH_DATA[qb.toLowerCase().trim()]) return qb.toLowerCase().trim();
+          if (qb) {
+            qb = qb.toLowerCase().trim();
+            if (BRANCH_DATA[qb]) return qb;
+          }
         } catch (e) { }
 
+        // 2. Check Daftra raw branch placeholders
         var rawText = "";
         var b1 = document.getElementById("rawBranchName");
         var b2 = document.getElementById("rawBranch");
         if (b1 && b1.innerText && b1.innerText.indexOf("{%") === -1) rawText += " " + b1.innerText;
         if (b2 && b2.innerText && b2.innerText.indexOf("{%") === -1) rawText += " " + b2.innerText;
+
+        // 3. Fallback scan on document body
         rawText = (rawText + " " + document.body.innerText).toLowerCase();
 
         if (rawText.indexOf("الدمام") !== -1 || rawText.indexOf("dammam") !== -1) return "dammam";
         if (rawText.indexOf("جدة") !== -1 || rawText.indexOf("jeddah") !== -1 || rawText.indexOf("مكة") !== -1) return "jeddah";
         if (rawText.indexOf("المدينة") !== -1 || rawText.indexOf("madina") !== -1 || rawText.indexOf("medina") !== -1) return "madinah";
-        return "riyadh";
+
+        return "riyadh"; // Default branch
       }
 
+      // Apply Branch details to Header Title, Stamp, and Seller Address
       function applyBranchInfo() {
         var key = getBranchKey();
         var b = BRANCH_DATA[key] || BRANCH_DATA.riyadh;
@@ -1150,84 +1198,39 @@
         if (sBld && b.buildingNo) sBld.innerText = b.buildingNo;
       }
 
-      // Invoice Title & Status Type Adapter (Draft, Tax Invoice, Credit Note)
-      function checkInvoiceType() {
-        try {
-          var titleAr = document.getElementById("invTitleAr");
-          var titleEn = document.getElementById("invTitleEn");
-          var statusPill = document.getElementById("statusPill");
-          var invNo = document.getElementById("invNumber") ? document.getElementById("invNumber").innerText.trim().toLowerCase() : "";
-          var rawTitle = document.getElementById("rawInvoiceTitle") ? document.getElementById("rawInvoiceTitle").innerText.trim().toLowerCase() : "";
-
-          if (invNo.indexOf("draft") !== -1 || invNo.indexOf("مسودة") !== -1 || rawTitle.indexOf("draft") !== -1 || rawTitle.indexOf("مسودة") !== -1) {
-            if (titleAr) titleAr.innerText = "مسودة فاتورة";
-            if (titleEn) titleEn.innerHTML = "&nbsp;/ DRAFT INVOICE";
-            if (statusPill) {
-              statusPill.innerText = "مسودة | DRAFT";
-              statusPill.style.backgroundColor = "#64748b";
-            }
-          } else if (rawTitle.indexOf("إشعار دائن") !== -1 || rawTitle.indexOf("credit") !== -1 || invNo.indexOf("cn") !== -1) {
-            if (titleAr) titleAr.innerText = "إشعار دائن";
-            if (titleEn) titleEn.innerHTML = "&nbsp;/ CREDIT NOTE";
-            if (statusPill) {
-              statusPill.innerText = "إشعار دائن | CREDIT NOTE";
-              statusPill.style.backgroundColor = "#b45309";
-            }
-          } else if (rawTitle.indexOf("مرتجع") !== -1 || rawTitle.indexOf("refund") !== -1) {
-            if (titleAr) titleAr.innerText = "فاتورة مرتجعة";
-            if (titleEn) titleEn.innerHTML = "&nbsp;/ REFUND INVOICE";
-          } else {
-            if (titleAr) titleAr.innerText = "فاتورة ضريبية";
-            if (titleEn) titleEn.innerHTML = "&nbsp;/ TAX INVOICE";
-            if (statusPill) {
-              statusPill.innerText = "مستحقة الدفع | DUE";
-              statusPill.style.backgroundColor = "#00737a";
-            }
-          }
-        } catch (e) { }
-      }
-
-      // Clean preview or empty metadata values
+      // Clean Meta Info placeholders if unfilled
       function cleanMetaInfo() {
-        function sanitize(id, fallback) {
-          var el = document.getElementById(id);
-          if (!el) return;
-          var t = el.innerText.trim();
-          if (t.indexOf("{%") !== -1) {
-            el.innerText = fallback;
-          }
+        // PO Number
+        var po = document.getElementById("poNumber");
+        if (po && (po.innerText.indexOf("{%") !== -1 || po.innerText.trim() === "")) {
+          po.innerText = "—";
+        }
+        // Project Number
+        var proj = document.getElementById("projNumber");
+        if (proj && (proj.innerText.indexOf("{%") !== -1 || proj.innerText.trim() === "")) {
+          proj.innerText = "—";
         }
 
-        sanitize("invNumber", "INV-2026-0891");
-        sanitize("invDate", "2026-08-31");
-        sanitize("poNumber", "PO-2026-0891");
-        sanitize("projNumber", "PRJ-9042");
-        sanitize("buyerName", "شركة سوليدير للتطوير العقاري");
-        sanitize("buyerVatId", "300000000000003");
-        sanitize("buyerCrNo", "1010000000");
-        sanitize("buyerAddress", "طريق أنس بن مالك، حي الملقا، الرياض، المملكة العربية السعودية");
-        sanitize("buyerPostalCode", "12331");
-        sanitize("buyerBuildingNo", "3421");
-        sanitize("buyerProjectName", "أعمال فحص وتقييم الشروخ بسقف القبو بمشروع سوليدير بوليفارد - حي الملقا بمدينة الرياض");
+        // Buyer card fields
+        var bp = document.getElementById("buyerPostalCode");
+        var bb = document.getElementById("buyerBuildingNo");
+        var bpj = document.getElementById("buyerProjectName");
+        if (bp && (bp.innerText.indexOf("{%") !== -1 || bp.innerText.trim() === "")) bp.innerText = "—";
+        if (bb && (bb.innerText.indexOf("{%") !== -1 || bb.innerText.trim() === "")) bb.innerText = "—";
+        if (bpj && (bpj.innerText.indexOf("{%") !== -1 || bpj.innerText.trim() === "")) bpj.innerText = "—";
 
-        var qrHolder = document.getElementById("zatcaQrCodeHolder");
-        if (qrHolder && (qrHolder.innerHTML.indexOf("{%") !== -1 || qrHolder.innerHTML.trim() === "")) {
-          qrHolder.innerHTML = '<svg width="95" height="95" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-            '<rect width="100" height="100" fill="white"/>' +
-            '<rect x="10" y="10" width="28" height="28" rx="3" stroke="#0f172a" stroke-width="4" fill="none"/>' +
-            '<rect x="18" y="18" width="12" height="12" fill="#0f172a"/>' +
-            '<rect x="62" y="10" width="28" height="28" rx="3" stroke="#0f172a" stroke-width="4" fill="none"/>' +
-            '<rect x="70" y="18" width="12" height="12" fill="#0f172a"/>' +
-            '<rect x="10" y="62" width="28" height="28" rx="3" stroke="#0f172a" stroke-width="4" fill="none"/>' +
-            '<rect x="18" y="70" width="12" height="12" fill="#0f172a"/>' +
-            '<rect x="46" y="14" width="8" height="8" fill="#0f172a"/>' +
-            '<rect x="46" y="28" width="8" height="18" fill="#0f172a"/>' +
-            '<rect x="62" y="46" width="12" height="8" fill="#0f172a"/>' +
-            '<rect x="78" y="46" width="12" height="18" fill="#0f172a"/>' +
-            '<rect x="46" y="62" width="18" height="8" fill="#0f172a"/>' +
-            '<rect x="46" y="78" width="8" height="12" fill="#0f172a"/>' +
-            '<rect x="68" y="74" width="22" height="16" fill="#0f172a"/>' +
-            '</svg>';
+        // Project name bar (above items table)
+        var pnbv = document.getElementById("projectNameBarValue");
+        if (pnbv) {
+          if (pnbv.innerText.indexOf("{%") !== -1 || pnbv.innerText.trim() === "") {
+            // Try to get from buyerProjectName
+            var bpjVal = document.getElementById("buyerProjectName");
+            pnbv.innerText = (bpjVal && bpjVal.innerText && bpjVal.innerText !== "—") ? bpjVal.innerText : "—";
+          }
+          // Sync: if buyer card has a real value, use it
+          if (bpj && bpj.innerText && bpj.innerText !== "—" && pnbv.innerText === "—") {
+            pnbv.innerText = bpj.innerText;
+          }
         }
 
         var ft = document.getElementById("footer");
@@ -1236,100 +1239,40 @@
         }
       }
 
-      // Format Items Table
+      // Format Daftra Table or generate sample table for browser preview
       function processItemsTable() {
         var wrap = document.getElementById("items-list");
         if (!wrap) return;
 
-        // If local preview without Daftra backend
+        // If running in raw HTML preview mode without Daftra ERP backend, render sample table
         if (wrap.innerHTML.indexOf("{%items_list%}") !== -1) {
           wrap.innerHTML = '<table id="listing_table" class="listing-table" cellpadding="0" cellspacing="0">' +
             '<thead>' +
             '<tr>' +
-            '<th style="width:24px;">No<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">م</span></th>' +
-            '<th style="width:50px;">Item No<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">رقم الصنف</span></th>' +
-            '<th>Item Description<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">وصف الصنف</span></th>' +
-            '<th style="width:42px;">Unit<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الوحدة</span></th>' +
-            '<th style="width:36px;">Qty<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الكمية</span></th>' +
-            '<th style="width:58px;">Unit Price<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">سعر الوحدة</span></th>' +
-            '<th style="width:72px;">Total Before VAT<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الإجمالي قبل الضريبة</span></th>' +
-            '<th style="width:62px;">VAT 15%<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">ضريبة %15</span></th>' +
-            '<th style="width:52px;">Discount<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الخصم</span></th>' +
-            '<th style="width:72px;">Total After VAT<br><span style="font-size:7px; color:rgba(255,255,255,0.75);">الإجمالي بعد الضريبة</span></th>' +
+            '<th style="width:22px;">م<br><span style="font-size:7px; color:rgba(255,255,255,0.72);">No</span></th>' +
+            '<th style="width:32px;">رقم الصنف<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Item No</span></th>' +
+            '<th>الوصف وتفاصيل الخدمة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Description &amp; Service Details</span></th>' +
+            '<th style="width:28px;">الوحدة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Unit</span></th>' +
+            '<th style="width:28px;">الكمية<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Qty</span></th>' +
+            '<th style="width:52px;">سعر الوحدة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Unit Price</span></th>' +
+            '<th style="width:60px;">الإجمالي قبل الضريبة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Total Before VAT</span></th>' +
+            '<th style="width:52px;">ضريبة القيمة 15%<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">VAT 15%</span></th>' +
+            '<th style="width:40px;">الخصم<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Discount</span></th>' +
+            '<th style="width:62px;">الإجمالي بعد الضريبة<br><span style="font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;">Total After VAT</span></th>' +
             '</tr>' +
             '</thead>' +
             '<tbody>' +
             '<tr>' +
             '<td>1</td>' +
             '<td>000004</td>' +
-            '<td style="text-align:right; font-weight:600;">من سقف (concrete core test) أخذ عينات لبية خرسانية القبو وفحصها للكسر وتحديد مقاومة الضغط للخرسانة.</td>' +
-            '<td>اختبار</td>' +
-            '<td>1.5</td>' +
-            '<td>355.00</td>' +
-            '<td>532.50</td>' +
-            '<td>79.88</td>' +
-            '<td>-</td>' +
-            '<td>612.38</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td>2</td>' +
-            '<td>000004</td>' +
-            '<td style="text-align:right; font-weight:600;">من سقف (concrete core test) أخذ عينات لبية خرسانية القبو بمناطق الشروخ لفحص امتداد الشروخ داخل قطاع السقف.</td>' +
+            '<td style="text-align:right;">أعمال فحص التربة واختبارات الجسات الحقلية والمخبرية لموقع المشروع (Soil Investigation &amp; Geotechnical Testing)</td>' +
             '<td>اختبار</td>' +
             '<td>1</td>' +
-            '<td>185.00</td>' +
-            '<td>185.00</td>' +
-            '<td>27.75</td>' +
-            '<td>-</td>' +
-            '<td>212.75</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td>3</td>' +
-            '<td>000012</td>' +
-            '<td style="text-align:right; font-weight:600;">وتحديد (cover meter) تحديد توزيع وأقطار حديد التسليح وقيمة الغطاء الخرساني بسقف القبو بمناطق الشروخ.</td>' +
-            '<td>اختبار</td>' +
-            '<td>3</td>' +
-            '<td>162.00</td>' +
-            '<td>486.00</td>' +
-            '<td>72.90</td>' +
-            '<td>-</td>' +
-            '<td>558.90</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td>4</td>' +
-            '<td>000026</td>' +
-            '<td style="text-align:right; font-weight:600;">على العناصر (UPV) إجراء اختبار الموجات فوق الصوتية الانشائية للتأكد من تجانس الخرسانة وخلوها من العيوب والتحقق من احتمالية امتداد الشروخ.</td>' +
-            '<td>اختبار</td>' +
-            '<td>5</td>' +
-            '<td>250.00</td>' +
-            '<td>1,250.00</td>' +
-            '<td>187.50</td>' +
-            '<td>-</td>' +
-            '<td>1,437.50</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td>5</td>' +
-            '<td>000012</td>' +
-            '<td style="text-align:right; font-weight:600;">للكشف عن (half-cell) إجراء اختبار فحص نصف الخلية احتمالية انتشار الصدأ في حديد التسليح بمناطق الشروخ وتسريب المياه بسقف القبو.</td>' +
-            '<td>اختبار</td>' +
-            '<td>2</td>' +
-            '<td>279.00</td>' +
-            '<td>558.00</td>' +
-            '<td>83.70</td>' +
-            '<td>-</td>' +
-            '<td>641.70</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td>6</td>' +
-            '<td>000026</td>' +
-            '<td style="text-align:right; font-weight:600;">إجراء إعادة تحقق إنشائي لمنطقة الشروخ بسقف القبو بمنطقة الشروخ، بالاعتماد على المخططات الإنشائية المتوفرة، والنموذج الإنشائي القائم، ونتائج الاختبارات الحقلية والمعملية المنفذة، وذلك بهدف مراجعة وتأكيد الأحمال الفعلية القائمة على السقف والعناصر الإنشائية المرتبطة به. مع إعداد التفاصيل والمخططات اللازمة لأعمال معالجة الشروخ، وإصدار تقرير فني يتضمن مدخلات إعادة التحقق، نتائج التحليل، تقييم حالة الشروخ، طريقة المعالجة المقترحة، والاستنتاجات والتوصيات الفنية اللازمة.</td>' +
-            '<td>تقرير</td>' +
-            '<td>0.5</td>' +
-            '<td>4,150.00</td>' +
-            '<td>2,075.00</td>' +
-            '<td>183.82</td>' +
-            '<td style="color:#dc2626; font-weight:700;">849.53</td>' +
-            '<td>1,409.29</td>' +
+            '<td>1,000.00</td>' +
+            '<td>1,000.00</td>' +
+            '<td>150.00</td>' +
+            '<td>—</td>' +
+            '<td>1,150.00</td>' +
             '</tr>' +
             '</tbody>' +
             '</table>';
@@ -1339,49 +1282,69 @@
         var tbl = wrap.querySelector("table") || document.getElementById("listing_table");
         if (!tbl || !tbl.rows || tbl.rows.length === 0) return;
 
-        // Ensure first cell styling
-        for (var r = 0; r < tbl.rows.length; r++) {
-          if (r === 0) {
-            for (var c = 0; c < tbl.rows[0].cells.length; c++) {
-              tbl.rows[0].cells[c].style.backgroundColor = "#00737a";
-              tbl.rows[0].cells[c].style.color = "#ffffff";
+        var headerRow = tbl.rows[0];
+        var taxRateIdx = -1;
+        var taxAmtIdx = -1;
+        var discIdx = -1;
+        var lastIdx = headerRow.cells.length - 1;
+
+        for (var c = 0; c < headerRow.cells.length; c++) {
+          var txt = headerRow.cells[c].innerText.toLowerCase().trim();
+          if (txt.indexOf("نسبة الضريبة") !== -1 || txt.indexOf("معدل الضريبة") !== -1 || txt.indexOf("tax rate") !== -1 || txt.indexOf("vat rate") !== -1 || (txt.indexOf("ضريبة") !== -1 && txt.indexOf("%") !== -1)) {
+            taxRateIdx = c;
+          } else if (txt.indexOf("مبلغ الضريبة") !== -1 || txt.indexOf("قيمة الضريبة") !== -1 || txt.indexOf("ضريبة") !== -1 || txt.indexOf("tax amount") !== -1 || txt.indexOf("vat amount") !== -1) {
+            taxAmtIdx = c;
+          } else if (txt.indexOf("خصم") !== -1 || txt.indexOf("discount") !== -1) {
+            discIdx = c;
+          }
+        }
+
+        // Set last column header with lighter English color
+        headerRow.cells[lastIdx].innerHTML = "الإجمالي شامل الضريبة<br><span style='font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;'>Total Incl. VAT</span>";
+
+        // Check if discount exists
+        var hasDiscount = false;
+        if (discIdx !== -1) {
+          for (var r = 1; r < tbl.rows.length; r++) {
+            var cell = tbl.rows[r].cells[discIdx];
+            if (cell) {
+              var num = parseFloat(cell.innerText.replace(/[^0-9.]/g, ""));
+              if (num > 0) { hasDiscount = true; break; }
             }
           }
         }
-      }
+        var discSummary = document.getElementById("dispDiscount");
+        if (discSummary) {
+          var rawD = discSummary.innerText.replace(/[^0-9.]/g, "");
+          var totalDisc = parseFloat(rawD);
+          if (!isNaN(totalDisc) && totalDisc > 0) hasDiscount = true;
+        }
 
-      // Format financial totals
-      function formatTotals() {
-        var s = document.getElementById("dispSubtotal");
-        var d = document.getElementById("dispDiscount");
-        var v = document.getElementById("dispVat");
-        var t = document.getElementById("total");
+        // Update Tax Amount header with lighter English color
+        if (taxAmtIdx !== -1) {
+          headerRow.cells[taxAmtIdx].innerHTML = "مبلغ الضريبة (15%)<br><span style='font-size:7px; color:rgba(255,255,255,0.72); font-weight:500;'>VAT Amount (15%)</span>";
+        }
+
+        // Remove Tax Rate column and conditionally remove Discount column from items table
+        var toDelete = [];
+        if (taxRateIdx !== -1) toDelete.push(taxRateIdx);
+        if (discIdx !== -1 && !hasDiscount) toDelete.push(discIdx);
+
+        toDelete.sort(function (a, b) { return b - a; });
+        toDelete.forEach(function (idx) {
+          for (var r = 0; r < tbl.rows.length; r++) {
+            if (tbl.rows[r].cells.length > idx) {
+              tbl.rows[r].deleteCell(idx);
+            }
+          }
+        });
+
+        // Control Totals Table discount row & subtotal label
         var dRow = document.getElementById("rowDiscount");
         var lblSubAr = document.getElementById("lblSubtotalAr");
         var lblSubEn = document.getElementById("lblSubtotalEn");
 
-        function cleanAmount(el, fallbackVal) {
-          if (!el) return "";
-          var txt = el.innerText.trim();
-          if (txt.indexOf("{%") !== -1 || txt === "") {
-            el.innerText = fallbackVal;
-            return fallbackVal;
-          }
-          txt = txt.replace(/SAR\s*SAR/gi, "SAR").replace(/ر\.س\s*SAR/gi, "SAR");
-          if (txt.indexOf("SAR") === -1 && txt.indexOf("ر.س") === -1) {
-            txt += " SAR";
-          }
-          el.innerText = txt;
-          return txt;
-        }
-
-        cleanAmount(s, "5,086.50 SAR");
-        var discTxt = cleanAmount(d, "849.53 SAR");
-        cleanAmount(v, "635.55 SAR");
-        cleanAmount(t, "4,872.52 SAR");
-
-        var discNum = parseFloat(discTxt.replace(/[^0-9.]/g, ""));
-        if (!isNaN(discNum) && discNum > 0) {
+        if (hasDiscount) {
           if (dRow) dRow.style.display = "";
           if (lblSubAr) lblSubAr.innerText = "المجموع الفرعي (قبل الخصم)";
           if (lblSubEn) lblSubEn.innerText = "Subtotal (Excl. Discount)";
@@ -1389,6 +1352,23 @@
           if (dRow) dRow.style.display = "none";
           if (lblSubAr) lblSubAr.innerText = "المجموع قبل الضريبة";
           if (lblSubEn) lblSubEn.innerText = "Total Before VAT";
+        }
+
+        // Add serial column if missing
+        var firstTh = tbl.rows[0].cells[0];
+        var firstThTxt = firstTh ? (firstTh.innerText || "").trim() : "";
+        if (firstTh && firstThTxt.indexOf("#") === -1 && firstThTxt.indexOf("م") !== 0 && firstThTxt !== "م") {
+          for (var i = 0; i < tbl.rows.length; i++) {
+            var c = tbl.rows[i].insertCell(0);
+            c.style.cssText = "width:22px; text-align:center; font-weight:700; font-size:9px;";
+            if (i === 0) {
+              c.innerHTML = "م<br><span style='font-size:7px; color:rgba(255,255,255,0.72);'>No</span>";
+              c.style.backgroundColor = "#00737a";
+              c.style.color = "#ffffff";
+            } else {
+              c.innerText = i;
+            }
+          }
         }
       }
 
@@ -1417,42 +1397,81 @@
 
       function updateTafqeet() {
         try {
-          var arEl = document.getElementById("dispTafqeetAr");
-          var enEl = document.getElementById("dispTafqeetEn");
-
           var tel = document.getElementById("total");
-          var raw = tel ? tel.innerText.replace(/[^0-9.]/g, "") : "4872.52";
-          if (!raw || isNaN(parseFloat(raw))) raw = "4872.52";
+          var rawText = tel ? tel.innerText : "";
+          // Strip anything that's not a digit or dot
+          var raw = rawText.replace(/[^0-9.]/g, "");
+          // If placeholder not yet replaced or empty, try to sum from items table
+          if (!raw || isNaN(parseFloat(raw)) || parseFloat(raw) === 0) {
+            // Try to read from last column of items table
+            var tbl2 = document.querySelector("#items-list table") || document.getElementById("listing_table");
+            var sum = 0;
+            if (tbl2 && tbl2.rows.length > 1) {
+              for (var ri = 1; ri < tbl2.rows.length; ri++) {
+                var lastCell = tbl2.rows[ri].cells[tbl2.rows[ri].cells.length - 1];
+                if (lastCell) {
+                  var cv = parseFloat(lastCell.innerText.replace(/[^0-9.]/g, ""));
+                  if (!isNaN(cv)) sum += cv;
+                }
+              }
+            }
+            raw = sum > 0 ? sum.toFixed(2) : "1150.00";
+          }
           var num = parseFloat(raw).toFixed(2);
           var r = parseInt(num.split(".")[0], 10);
           var h2 = parseInt(num.split(".")[1], 10);
           var arT = toAr(r) + " ريالاً سعودياً" + (h2 > 0 ? " و" + toAr(h2) + " هللة" : "") + " فقط لا غير";
           var enT = toEn(r) + " Saudi Riyals" + (h2 > 0 ? " and " + toEn(h2) + " Halalas" : "") + " Only";
+          var arEl = document.getElementById("dispTafqeetAr");
+          var enEl = document.getElementById("dispTafqeetEn");
+          if (arEl) arEl.innerText = arT;
+          if (enEl) enEl.innerText = enT;
+        } catch (e) { }
+      }
 
-          if (arEl && (arEl.innerText.indexOf("{%") !== -1 || arEl.innerText.trim() === "" || arEl.innerText === "--")) {
-            arEl.innerText = arT;
-          }
-          if (enEl && (enEl.innerText.indexOf("{%") !== -1 || enEl.innerText.trim() === "" || enEl.innerText === "--")) {
-            enEl.innerText = enT;
+      // Invoice title type adapter
+      function checkInvoiceType() {
+        try {
+          var t = document.querySelector(".title");
+          var arTarget = document.querySelector(".arabicTarget");
+          var enTarget = document.querySelector(".englishTarget");
+          if (!arTarget || !enTarget) return;
+          if (t) {
+            var txt = (t.innerText || "").toLowerCase();
+            if (txt.indexOf("إشعار دائن") !== -1 || txt.indexOf("credit note") !== -1) {
+              arTarget.innerText = "إشعار دائن";
+              enTarget.innerText = "/ CREDIT NOTE";
+            } else if (txt.indexOf("مرتجع") !== -1 || txt.indexOf("refund") !== -1) {
+              arTarget.innerText = "فاتورة مرتجعة";
+              enTarget.innerText = "/ REFUND INVOICE";
+            } else if (txt.indexOf("مسودة") !== -1 || txt.indexOf("draft") !== -1 || txt.indexOf("pro forma") !== -1 || txt.indexOf("proforma") !== -1) {
+              arTarget.innerText = "فاتورة مسودة";
+              enTarget.innerText = "/ DRAFT INVOICE";
+            } else {
+              // Explicit tax invoice (default)
+              arTarget.innerText = "فاتورة ضريبية";
+              enTarget.innerText = "/ TAX INVOICE";
+            }
+          } else {
+            arTarget.innerText = "فاتورة ضريبية";
+            enTarget.innerText = "/ TAX INVOICE";
           }
         } catch (e) { }
       }
 
-      // Run all formatting immediately and on window load
-      function runAll() {
-        cleanMetaInfo();
+      // Execute all enhancements on load
+      try {
         applyBranchInfo();
-        checkInvoiceType();
         processItemsTable();
-        formatTotals();
-        updateTafqeet();
+        cleanMetaInfo();
+        checkInvoiceType();
+        // Delay tafqeet slightly to allow DOM values to settle
+        setTimeout(function() {
+          try { updateTafqeet(); } catch(e) {}
+        }, 100);
+      } catch (err) {
+        console.error("Invoice formatting error:", err);
       }
-
-      runAll();
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", runAll);
-      }
-      window.onload = runAll;
     })();
   </script>
 
